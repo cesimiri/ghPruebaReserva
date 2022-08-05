@@ -3,12 +3,12 @@ import './App.css';
 import NavBar from './componentes/navBar';
 import Dropdown from './componentes/dropDown';
 import Calendary from './componentes/calendary';
-import DatosReserva from './componentes/datosReserva';
+import DatosHoteles from './componentes/DatosHoteles';
 
 function App() {
   return (
 
-    <div className="App bg-black h-screen">
+    <div className="App bg-black ">
       <p className="text-gray-300 text-center">BIENVENIDO</p>  
       <NavBar/>
       
@@ -25,7 +25,7 @@ function App() {
       </div>
 
       <div  className='p-14 flex-row w-3/4'>
-        <DatosReserva/>
+        <DatosHoteles/>
       </div>
       
     </div>

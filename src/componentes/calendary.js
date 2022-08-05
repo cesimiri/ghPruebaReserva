@@ -12,11 +12,13 @@ registerLocale("es", es);
 const Calendary =() =>{
     // inicia desde 0 al 11
     const [startDate, setStartDate] = useState(new Date()); ;
-
-    const mostrarFecha = () =>{
+    /*
+    const mostrarFecha = (e) =>{
+        e.preventDefault();
         const opcion = {weekday:'long', day:'numeric', month:'numeric', year:'numeric'};
         alert(startDate.toLocaleDateString('es-Es', opcion));
     }
+    */
     return(
         <>
             <DatePicker 
@@ -27,9 +29,9 @@ const Calendary =() =>{
             />
             <br/>
             <br/>
-            <input type="button" value= "Confirmar fecha " className='bg-purple-700' onClick={()=>mostrarFecha(startDate)} />
+            
         </>
     )
 }
-
+//<input type="button" value= "Confirmar fecha " className='bg-purple-700' onClick={()=>mostrarFecha(startDate)} />
 export default Calendary;

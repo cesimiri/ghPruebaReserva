@@ -1,6 +1,6 @@
 import {useSelector} from 'react-redux';
 
-const DatosReserva = () =>{
+const DatosHoteles = () =>{
     const stateReserva = useSelector(state => state.reserva)
 
     const mensaje = ()=> {
@@ -15,6 +15,7 @@ const DatosReserva = () =>{
                     <h3 className='border'>{reserva.hotel}</h3>
                     <p>{reserva.fecha}</p>
                     <p>{reserva.hotel}</p>  
+                    <img className=' pl-40 ' src={reserva.imagen} alt ="foto"/>
                 </div>
             ))}
             <button className="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded" onClick={()=>mensaje()}>
@@ -26,4 +27,4 @@ const DatosReserva = () =>{
     )
 }
 
-export default DatosReserva;
+export default DatosHoteles;
