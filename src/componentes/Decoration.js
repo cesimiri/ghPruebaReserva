@@ -23,12 +23,6 @@ const Decoration = () => {
         dispatch (datosDecoracion(position))
         
     }
-    // const clicked = (valor , nombreDecoracion) => {
-    //     dispatch(agregardecoracion(valor))
-    //     dispatch(stateDecoracion(true))
-    //     dispatch(agregarDecoracionNombre(nombreDecoracion))
-    //     //console.log('hola con el valor agregardecoracion '+ i)
-    // }
     return (
         <>
             {

@@ -14,13 +14,13 @@ const Total = () => {
     const a = parseFloat(precioCuarto) + parseFloat(precioDecoracion)
     const c = parseFloat(stateReserva.valorTotal)
     const subTotal = parseFloat(a) + parseFloat(c)
-    
+
     const b = parseFloat(subTotal) * 0.12
     const iva = parseFloat(b).toFixed(2)
     const to = parseFloat(subTotal) + parseFloat(iva)
     const total = parseFloat(to).toFixed(2)
 
-    useEffect(()=>{
+    useEffect(() => {
         dispatch(sumaTotCons())
     }, [dispatch, stateReserva.arrayProductosSelect])
 
@@ -33,26 +33,22 @@ const Total = () => {
                             <h5 className="text-xl font-bold leading-none text-gray-900 dark:text-white">DESGLOCE</h5>
                         </div>
                         <div className="flow-root">
-                            <ul className="divide-y divide-gray-400 dark:divide-gray-700">
+                            <ul className="divide-y divide-gray-700 dark:divide-gray-700">
                                 <li className="sm:py-0">
-                                    <b>HOTEL</b>
-                                    <div className=" items-center space-x-4">
-                                        <div className="items-center">
-                                            {/* <p className='items-center'>Código :{stateReserva.reserva.hotelCod}</p> */}
+                                    <div className="flex items-center space-x-4">
+                                        <div className="flex-shrink-0">
+                                            <b>HOTEL :</b>
+                                        </div>
+                                        <div className="flex-shrink-0">
                                             <p className='items-center'>{stateReserva.reserva.hotelNombre} </p>
-                                        </div>
-                                        <div className="flex-1 min-w-0">
-                                            <p className="text-sm font-medium text-gray-900 truncate dark:text-white">
-
-                                            </p>
-                                        </div>
-                                        <div className="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
                                         </div>
                                     </div>
                                 </li>
                                 <li className="py-3 sm:py-0">
-                                    <b>HABITACIÓN</b>
                                     <div className="flex items-center space-x-4">
+                                        <div className="flex-shrink-0">
+                                            <b>HABITACIÓN:</b>
+                                        </div>
                                         <div className="flex-shrink-0">
                                             <p>{stateReserva.reserva.cuartoNombre}</p>
                                         </div>
@@ -64,8 +60,10 @@ const Total = () => {
                                     </div>
                                 </li>
                                 <li className="py-3 sm:py-0">
-                                    <b>DECORACIÓN</b>
                                     <div className="flex items-center space-x-4">
+                                    <div className="flex-shrink-0">
+                                            <b>DECORACIÓN:</b>
+                                        </div>
                                         <div className="flex-shrink-0">
                                             {stateReserva.reserva.decoracionNombre}
                                         </div>
@@ -97,13 +95,13 @@ const Total = () => {
                                                         Total
                                                     </th>
                                                     <th className=' border border-black'>
-                                                        Elimi
+                                                        Supr
                                                     </th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 {stateReserva.arrayProductosSelect.map((item) => (
-                                                    <tr className="" key={item.prod_cod_prod}>
+                                                    <tr className="divide-y divide-gray-500" key={item.prod_cod_prod}>
 
                                                         <td>
                                                             {item.prod_nom_prod}
@@ -120,13 +118,13 @@ const Total = () => {
                                                                 onClick={() => dispatch(sumarItem(item))}>+</Button>
                                                         </td>
                                                         <td>
-                                                            
+
                                                         </td>
                                                         <td>
-                                                            ${ (parseFloat(item.columna) * item.prod_cant).toFixed(2)}
+                                                            ${(parseFloat(item.columna) * item.prod_cant).toFixed(2)}
                                                         </td>
                                                         <td>
-                                                        <Button className='border border-cyan-700 bg-red-700 hover:bg-red-800 text-white w-5'
+                                                            <Button className='border border-cyan-700 bg-red-700 hover:bg-red-800 text-white w-5'
                                                                 onClick={() => dispatch(eliminarItem(item))}>*</Button>
                                                         </td>
                                                     </tr>
@@ -135,9 +133,7 @@ const Total = () => {
                                             </tbody>
                                         </table>
                                     </div>
-
-
-                                    <b >Total = $ {(stateReserva.valorTotal).toFixed(2)} </b>
+                                    <b >Total Consumibles = $ {(stateReserva.valorTotal).toFixed(2)} </b>
                                 </li>
 
                                 <li className=" sm:py-4 ">
