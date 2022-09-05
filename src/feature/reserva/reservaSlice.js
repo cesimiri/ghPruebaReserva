@@ -261,4 +261,3 @@ export const { agregarListaConsumo, buscarHotel, fechaHora, agregarcuarto, agreg
     = reservaSlice.actions;
 export default reservaSlice.reducer;
 
->>>>>>> 743b2641213f14d2535eb0344bb8c58521eaf5da
