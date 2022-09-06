@@ -16,51 +16,47 @@ function App() {
 
   const dispatch = useDispatch()
 
-  useEffect( ()=>{
+  useEffect(() => {
 
     dispatch(Sucursales())
 
-  },[dispatch] )
+  }, [dispatch])
 
   return (
 
-    <div className="App bg-slate-600 max-w-full h-full container">
-      <NavBar/>
-      
-      <div className='pl-16 pt-5 float-left flex-row' >
-      <p className='text-white'>SELECCIÓN DE HOTEL</p>
-        <Dropdown/>
+    <div className="App bg-slate-600 max-w-full h-full container relative">
+      <NavBar />
+      <div className='pl-20 pt-5 float-left flex-row' >
+        <p className='text-white'>SELECCIÓN DE HOTEL</p>
+        <Dropdown />
       </div>
       <div className='float-right pr-40' >
-        <br/>
+        <br />
         <p className='text-white'>SELECCIÓN DE FECHA DE RESERVA</p>
-        
       </div>
-      {/* mt-20 */}
-      <div  className=' fixed  border-cyan-200 w-80 text-center break-words float-right'>
-       <Total/>
+      <div className='fixed border-cyan-200 break-words float-left' >
+        <Total />
       </div>
-
-      <div  className='mt-20   object-center   border-slate-600'>
-       <RoomCard/>
+      <div className='mt-20 pl-72 border-slate-600'>
+        <RoomCard />
       </div>
 
-      <div  className='mt-20 object-center   border-slate-600'>
-       <Decoration/>
-      </div>
-      
-      <div  className='mt-20 object-center   border-slate-600'>
-       <DropDownConsumable/>
+      <div className='mt-20 pl-72   border-slate-600'>
+        <Decoration />
       </div>
 
-      <div  className='mt-20 object-center   border-slate-600'>
-       <DatosCliente/>
+      <div className='mt-20 pl-72  border-slate-600'>
+        <DropDownConsumable />
+      </div>
+
+      <div className='mt-20 pl-72   border-slate-600'>
+        <DatosCliente />
       </div>
 
 
     </div>
-      
-      
+
+
   );
 }
 

@@ -21,12 +21,13 @@ const DatosCliente = () => {
     const handleChangeDireccion = e => {
         dispatch(setClienteDireccion(e.target.value))    
     }
-    console.log('name ' + stateReserva.reserva.clienteNombres)
+    const enviar = () =>{
+    }
     return (
         <>
             {
                 stateReserva.stateComponent.tipoHabitacionState === true ? (
-                    <div className="p-4 mx-auto max-w-2xl bg-white rounded-lg border shadow-md sm:p-8 dark:bg-gray-800 dark:border-gray-700">
+                    <div className="p-4 mx-auto max-w-xl bg-white rounded-lg border shadow-md sm:p-8 dark:bg-gray-800 dark:border-gray-700">
                         <div className="shadow overflow-hidden sm:rounded-md">
                             <div className="px-4 py-5 bg-white sm:p-6">
                                 <div className="grid grid-cols-6 gap-6">
@@ -77,7 +78,9 @@ const DatosCliente = () => {
                                 </div>
                             </div>
                             <div className="px-4 py-3 bg-gray-50 text-right sm:px-6">
-                                <button type="submit" className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                <button type="submit" 
+                                className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                                onClick={enviar}>
                                     Save
                                 </button>
                             </div>

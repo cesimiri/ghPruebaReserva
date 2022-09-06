@@ -200,23 +200,10 @@ const reservaSlice = createSlice({
                     state.TotalDeGasto.ListaConsumo.push({ id, precio, nombre })
 
                 } else {
-
-
                     const existe = state.TotalDeGasto.ListaConsumo.find(item => item.id === id)
-
                     if (!existe) {
                         state.TotalDeGasto.ListaConsumo.push({ id, precio, nombre })
                     }
-
-                    // state.TotalDeGasto.ListaConsumo.forEach((item)=>{
-                    //     console.log("Items=> ",item.id)
-                    //     // console.log("id", id)
-
-                    //     // if( parseInt(id) !== parseInt(item.id) ){
-
-                    //     //     state.TotalDeGasto.ListaConsumo.push({ id,precio, nombre  })
-                    //     // }
-                    // })
                 }
             }
         },

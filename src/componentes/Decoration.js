@@ -28,7 +28,7 @@ const Decoration = () => {
             {
                 // stateReserva.stateComponent.decoracion?.length > 0? (
                 stateReserva.stateComponent.tipoHabitacionState === true ?(
-                    <div className="p-4 mx-auto max-w-2xl bg-white rounded-lg border shadow-md sm:p-8 dark:bg-gray-800 dark:border-gray-700">
+                    <div className="p-4 mx-auto max-w-xl bg-white rounded-lg border shadow-md sm:p-8 dark:bg-gray-800 dark:border-gray-700">
                         <div className=" items-center mb-4">
                             <h5 className="text-xl font-bold leading-none text-gray-900 dark:text-white">Escoja la decoración</h5>
                         </div>
