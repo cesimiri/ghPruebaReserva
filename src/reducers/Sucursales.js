@@ -13,11 +13,11 @@ const initialState = {
         dropDownConsumible: false,
     },
     reserva: {
-        ClienteNombres :'',
-        clienteApellidos : '',
-        clienteEmail:'',
-        clienteTelefono : '',
-        clienteDireccion : '',
+        ClienteNombres: '',
+        clienteApellidos: '',
+        clienteEmail: '',
+        clienteTelefono: '',
+        clienteDireccion: '',
         hotelCod: 0,
         hotelNombre: '',
         cuartoCod: 0,
@@ -66,7 +66,7 @@ const initialState = {
     ],
     arrayProductosSelect: [],
     ValoresASumar: 0,
-    valorTotal : 0,
+    valorTotal: 0,
     arrayValores: [],
 }
 
@@ -96,25 +96,25 @@ const SucursalesSlice = createSlice({
                 }
             })
         },
-        setClienteNombre :(state, action) =>{
+        setClienteNombre: (state, action) => {
             const algo = action.payload
             state.reserva.clienteNombres = algo
         },
-        setClienteApellidos :(state, action) => {
+        setClienteApellidos: (state, action) => {
             const algo = action.payload
             state.reserva.clienteApellidos = algo
         },
-        setClienteEmail :(state, action)=>{
+        setClienteEmail: (state, action) => {
             const algo = action.payload
             state.reserva.clienteEmail = algo
         },
-        setclienteTelefono : (state, action) =>{
+        setclienteTelefono: (state, action) => {
             const algo = action.payload
-            state.reserva.clienteTelefono = algo 
+            state.reserva.clienteTelefono = algo
         },
-        setClienteDireccion : (state, action)=>{
+        setClienteDireccion: (state, action) => {
             const algo = action.payload
-            state.reserva.clienteDireccion = algo 
+            state.reserva.clienteDireccion = algo
         },
         setProductosPage: (state, action) => {
             let { pagina, limite } = action.payload
@@ -148,7 +148,7 @@ const SucursalesSlice = createSlice({
         },
         changeProducto: (state, action) => {
             const { prod_cod_prod, prod_cant, columna } = action.payload,
-            position = 0
+                position = 0
 
             const existe = state.arrayProductosSelect.find(item => parseInt(item.prod_cod_prod) === parseInt(prod_cod_prod))
 
@@ -165,11 +165,11 @@ const SucursalesSlice = createSlice({
 
             }
 
-            if( existe  ) {
-                    state.arrayValores[position] = columna * prod_cant
-                }else{
-                    state.arrayValores.push(columna * prod_cant ) 
-                }
+            if (existe) {
+                state.arrayValores[position] = columna * prod_cant
+            } else {
+                state.arrayValores.push(columna * prod_cant)
+            }
 
         },
         datosCuarto: (state, action) => {
@@ -193,15 +193,13 @@ const SucursalesSlice = createSlice({
             state.reserva.decoracionNombre = tpD.decora_nombre
             state.reserva.decoracionPrecio = tpD.decora_cosmax
         },
+        sumaTotCons: (state) => {
 
-        sumaTotCons: (state) =>{
-
-            if(state.arrayValores.length > 0){
-                state.valorTotal = state.arrayValores.reduce((x, i)=> parseFloat(x)+parseFloat(i) )
+            if (state.arrayValores.length > 0) {
+                state.valorTotal = state.arrayValores.reduce((x, i) => parseFloat(x) + parseFloat(i))
             }
 
         },
-
         sumarItem: (state, action) => {
 
             let { prod_cod_prod, prod_cant } = action.payload
@@ -211,16 +209,16 @@ const SucursalesSlice = createSlice({
             if (existe) {
                 const position = state.arrayProductosSelect.findIndex(c => parseInt(c.prod_cod_prod) === parseInt(prod_cod_prod))
 
-                existe.prod_cant +=  1
+                existe.prod_cant += 1
 
                 state.consumible[position] = { ...existe }
 
-                let ValoresASumar = existe.columna * existe.prod_cant 
+                let ValoresASumar = existe.columna * existe.prod_cant
 
-                if(  state.consumible[position]  ) {
+                if (state.consumible[position]) {
                     state.arrayValores[position] = ValoresASumar
                 }
-                
+
             }
 
         },
@@ -237,10 +235,10 @@ const SucursalesSlice = createSlice({
 
                     state.consumible[position] = { ...existe }
 
-                    let ValoresARestar = existe.columna * existe.prod_cant 
+                    let ValoresARestar = existe.columna * existe.prod_cant
 
-                    if(  state.consumible[position]  ) {
-                        state.arrayValores[position] =  ValoresARestar
+                    if (state.consumible[position]) {
+                        state.arrayValores[position] = ValoresARestar
                     }
                 }
 
@@ -252,17 +250,12 @@ const SucursalesSlice = createSlice({
 
             const existe = state.arrayProductosSelect.find(c => parseInt(c.prod_cod_prod) === parseInt(prod_cod_prod))
 
-            if(existe){
+            if (existe) {
                 const position = state.arrayProductosSelect.findIndex(c => parseInt(c.prod_cod_prod) === parseInt(prod_cod_prod))
-                
-                    state.arrayProductosSelect.splice(position, 1);
-                    state.arrayValores.splice(position, 1);
-
-
+                state.arrayProductosSelect.splice(position, 1);
+                state.arrayValores.splice(position, 1);
             }
         },
-
-
     },
     extraReducers: {
         [Sucursales.pending]: (state, action) => {
@@ -275,7 +268,7 @@ const SucursalesSlice = createSlice({
             const { estado, mensaje, data } = action.payload
 
             if (estado === 1) {
-                // sucursales es el nombre que se le dio al array en la clase SSucursales array('sucursales' => $exec));
+
                 const { sucursales } = data
                 state.sucursales = [...sucursales]
             }
@@ -291,7 +284,13 @@ const SucursalesSlice = createSlice({
             if (estado === 1) {
                 // consumible es el nombre que se le dio al array en la clase CConsumible array('consumible' => $exec));
                 const { consumible } = data
-                state.consumible = [...consumible]
+                // console.log(consumible) para mapear el array de objeto y traer los campos con valor
+                consumible.map((i)=>{
+                    if(i.columna){
+                        state.consumible.push(i)
+                    }
+                })
+                // state.consumible = [...consumible]
             }
         },
         [Decoracion.pending]: (state, action) => {
@@ -331,7 +330,7 @@ export const { sucursalesState, consumiblesState, setProductosPage,
     setBuscador,
     changeProducto, datosCuarto, datosHotelCod, datosHotelNombre, datosDecoracion,
     sumarItem, restarItem, sumaTotCons, eliminarItem,
-    setClienteNombre,setClienteApellidos,setClienteEmail,setclienteTelefono, setClienteDireccion,
+    setClienteNombre, setClienteApellidos, setClienteEmail, setclienteTelefono, setClienteDireccion,
 }
     = SucursalesSlice.actions;
 export default SucursalesSlice.reducer;

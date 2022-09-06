@@ -21,9 +21,7 @@ const Consumable = () => {
                         <input
                             type="text"
                             className="border border-gray-700 p-2 rounded mb-5"
-                            placeholder="Buscar"
-                            //onChange={e => setTerm(e.target.value)}
-                            
+                            placeholder="Buscar"          
                         />
                     </div>
                     <div className="flow-root">

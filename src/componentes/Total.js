@@ -14,7 +14,6 @@ const Total = () => {
     const a = parseFloat(precioCuarto) + parseFloat(precioDecoracion)
     const c = parseFloat(stateReserva.valorTotal)
     const subTotal = parseFloat(a) + parseFloat(c)
-
     const b = parseFloat(subTotal) * 0.12
     const iva = parseFloat(b).toFixed(2)
     const to = parseFloat(subTotal) + parseFloat(iva)
@@ -23,45 +22,39 @@ const Total = () => {
     useEffect(() => {
         dispatch(sumaTotCons())
     }, [dispatch, stateReserva.arrayProductosSelect])
-
-    return (
-        <>
-            {
-                stateReserva.stateComponent.tipoHabitacionState === true ? (
-                    <div className="p-4 mx-auto w-96 bg-white rounded-lg border shadow-md sm:p-8 dark:bg-gray-800 dark:border-gray-700 ">
-                        <div className=" items-center mb-1 pt-0">
-                            <h5 className="text-xl font-bold leading-none text-gray-900 dark:text-white">DESGLOCE</h5>
-                        </div>
-                        <div className="flow-root">
-                            <ul className="divide-y divide-gray-700 dark:divide-gray-700">
-                                <li className="sm:py-0">
-                                    <div className="flex items-center space-x-4">
+    /*/
+    <li className="sm:py-0 ">
+    <div className="flex items-center space-x-4 pb-3">
+    <div className="flex-shrink-0">
+    <b>HOTEL :</b>
+    </div>
+    <div className="flex-shrink-0">
+     <p className='items-center'>{stateReserva.reserva.hotelNombre} </p>
+     </div>
+    </div>
+    </li>
+    */
+    /*
+    <li className="py-3 sm:py-0">
+   <div className="flex items-center space-x-4 pb-3">
+   <div className="flex-shrink-0">
+ <b>HABITACIÓN:</b>
+ </div>
+   <div className="flex-shrink-0">
+      <p>{stateReserva.reserva.cuartoNombre}</p>
+    </div>
+    <div className="flex-1 min-w-0">
+     <p className="text-sm font-medium text-gray-900 truncate dark:text-white">
+     ${parseFloat(precioCuarto).toFixed(2)}
+           </p>
+        </div>
+     </div>
+  </li>
+    */
+    /*
+        <li className="py-3 sm:py-0">
+                                    <div className="flex items-center space-x-4 pb-3">
                                         <div className="flex-shrink-0">
-                                            <b>HOTEL :</b>
-                                        </div>
-                                        <div className="flex-shrink-0">
-                                            <p className='items-center'>{stateReserva.reserva.hotelNombre} </p>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li className="py-3 sm:py-0">
-                                    <div className="flex items-center space-x-4">
-                                        <div className="flex-shrink-0">
-                                            <b>HABITACIÓN:</b>
-                                        </div>
-                                        <div className="flex-shrink-0">
-                                            <p>{stateReserva.reserva.cuartoNombre}</p>
-                                        </div>
-                                        <div className="flex-1 min-w-0">
-                                            <p className="text-sm font-medium text-gray-900 truncate dark:text-white">
-                                                ${parseFloat(precioCuarto).toFixed(2)}
-                                            </p>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li className="py-3 sm:py-0">
-                                    <div className="flex items-center space-x-4">
-                                    <div className="flex-shrink-0">
                                             <b>DECORACIÓN:</b>
                                         </div>
                                         <div className="flex-shrink-0">
@@ -74,10 +67,42 @@ const Total = () => {
                                         </div>
                                     </div>
                                 </li>
+
+    */
+    //  <b >Total Consumibles = $ {(stateReserva.valorTotal).toFixed(2)} </b>
+
+    return (
+        <>
+            {
+                stateReserva.stateComponent.tipoHabitacionState === true ? (
+                    <div style={{ "width": "30rem" }} className="ml-2 p-3 w-96 bg-white rounded-lg border shadow-md  dark:bg-gray-800 dark:border-gray-700 absolute  ">
+                        <div className="flow-root">
+                            <ul className="divide-y divide-gray-700 dark:divide-gray-700 ">
+                                <table className='border mb-2'>
+                                    <tr className=' '>
+                                        <th className='w-28 '>HOTEL : </th>
+                                        <th className='w-60 '>{stateReserva.reserva.hotelNombre}</th>
+                                        <th className='w-24 '></th>
+                                    </tr>
+                                </table>
+                                <table className='mb-2'>
+                                    <tr>
+                                        <th className='w-28  '> HABITACIÓN: </th>
+                                        <th className='w-60 '>{stateReserva.reserva.cuartoNombre}</th>
+                                        <th className='w-24 '>${parseFloat(precioCuarto).toFixed(2)}</th>
+                                    </tr>
+                                </table>
+                                <table className='mb-2'>
+                                    <tr>
+                                        <th className='w-28 '> DECORACIÓN: </th>
+                                        <th className='w-60 '>{stateReserva.reserva.decoracionNombre}</th>
+                                        <th className='w-24 '>${parseFloat(precioDecoracion).toFixed(2)}</th>
+                                    </tr>
+                                </table>
                                 <li className="py-3 sm:py-0">
                                     <b>CONSUMIBLES</b>
 
-                                    <div className='overflow-x-auto relative'>
+                                    <div className='overflow-x-auto relative pb-3'>
                                         <table className='border'>
                                             <thead>
                                                 <tr>
@@ -118,7 +143,6 @@ const Total = () => {
                                                                 onClick={() => dispatch(sumarItem(item))}>+</Button>
                                                         </td>
                                                         <td>
-
                                                         </td>
                                                         <td>
                                                             ${(parseFloat(item.columna) * item.prod_cant).toFixed(2)}
@@ -133,54 +157,36 @@ const Total = () => {
                                             </tbody>
                                         </table>
                                     </div>
-                                    <b >Total Consumibles = $ {(stateReserva.valorTotal).toFixed(2)} </b>
+                                    <table className='mb-2'>
+                                        <tr>
+                                            <th className='w-28 '></th>
+                                            <th className='w-60 '>Total Consumible</th>
+                                            <th className='w-24 text-lg font-medium text-gray-900 truncate dark:text-white'>$ {(stateReserva.valorTotal).toFixed(2)}</th>
+                                        </tr>
+                                    </table>
                                 </li>
+                                <table className='mb-2'>
+                                    <tr>
+                                        <th className='w-28  '>SubTotal:</th>
+                                        <th className='w-60 '></th>
+                                        <th className='w-24 '>${subTotal.toFixed(2)}</th>
+                                    </tr>
+                                </table>
 
-                                <li className=" sm:py-4 ">
-
-                                    <div className="flex items-center space-x-4">
-                                        <div className="flex-shrink-0">
-                                            <strong>subTotal</strong>
-                                        </div>
-                                        <div className="flex-1 min-w-0">
-                                            <p className="text-sm font-medium text-gray-900 truncate dark:text-white">
-                                                {subTotal.toFixed(2)}
-                                            </p>
-                                        </div>
-                                        <div className="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li className="">
-                                    <div className="flex items-center space-x-4">
-                                        <div className="flex-shrink-0">
-                                            <strong>I.V.A</strong>
-                                        </div>
-                                        <div className="flex-1 min-w-0">
-                                            <p className="text-sm font-medium text-gray-900 truncate dark:text-white">
-                                                {iva}
-                                            </p>
-                                        </div>
-                                        <div className="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li className="">
-                                    <div className="flex items-center space-x-4">
-                                        <div className="flex-shrink-0">
-                                            <strong className='text-2xl'>Total</strong>
-                                        </div>
-                                        <div className="flex-1 min-w-0">
-                                            <p className="text-lg font-medium text-gray-900 truncate dark:text-white">
-                                                {total}
-                                            </p>
-
-                                        </div>
-                                    </div>
-                                </li>
-
+                                <table className='mb-2'>
+                                    <tr>
+                                        <th className='w-28  bg-slate-300'>I.V.A:</th>
+                                        <th className='w-60 '></th>
+                                        <th className='w-24 '>${iva}</th>
+                                    </tr>
+                                </table>
+                                <table className='mb-2'>
+                                    <tr>
+                                        <th className='w-28  bg-slate-300 text-2xl'>Total</th>
+                                        <th className='w-60 '></th>
+                                        <th className='w-24 '>${total}</th>
+                                    </tr>
+                                </table>
                             </ul>
                         </div>
                     </div>

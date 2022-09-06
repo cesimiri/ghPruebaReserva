@@ -17,22 +17,15 @@ const RoomCard = () => {
         setModalOn(true)
         setPosition(x)
     }
-
-    // console.log("Aqui ",stateReserva.tipoHabitaciones)
-
-    /* estos de aqui abajo es del modalRoom.js */
-    // const [showModalRoom, setShowModalRoom] = useState(false);
     return (
-        <div>
-            <div className="p-4 mx-auto max-w-2xl bg-white rounded-lg border shadow-md sm:p-8 dark:bg-gray-800 dark:border-gray-700">
-
+        <>
+            <div className="p-4 mx-auto max-w-xl bg-white rounded-lg border shadow-md sm:p-8 dark:bg-gray-800 dark:border-gray-700 ">
                 <div className="items-center mb-4">
                     <h5 className="text-xl font-bold leading-none text-gray-900 dark:text-white">Tipo De Habitaciones</h5>
                 </div>
                 <div className="flow-root">
                     <ul className="divide-y divide-gray-200 dark:divide-gray-700">
-                        {stateReserva.tipoHabitaciones.map((h, i) => (
-                            
+                        {stateReserva.tipoHabitaciones.map((h, i) => (    
                             <li key={h.tiha_cod_tiha} className="py-3 sm:py-4">
                                 <div className="flex items-center space-x-4">
                                     <div className="flex-shrink-0">
@@ -64,7 +57,7 @@ const RoomCard = () => {
             </div>
 
 
-        </div>
+        </>
     )
 }
 

@@ -36,7 +36,7 @@ const DropDownConsumable = () => {
     <>
       {
         stateReserva.stateComponent.decoracionState === true ? (
-          <div className="p-4 mx-auto max-w-2xl bg-white rounded-lg border shadow-md sm:p-8 dark:bg-gray-800 dark:border-gray-700">
+          <div className="p-4 mx-auto max-w-xl bg-white rounded-lg border shadow-md sm:p-8 dark:bg-gray-800 dark:border-gray-700">
             <div>
               <Select
                 defaultValue={{ label: 'Adicionales', value: 'Vacio ' }}
