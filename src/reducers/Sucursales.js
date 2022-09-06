@@ -36,7 +36,6 @@ const initialState = {
             },
         ],
         datosCliente: {
-
             clienteNombre: '',
             clienteApellidos: '',
             clienteCedula: '',
@@ -194,11 +193,11 @@ const SucursalesSlice = createSlice({
             state.reserva.decoracionPrecio = tpD.decora_cosmax
         },
         sumaTotCons: (state) => {
-
-            if (state.arrayValores.length > 0) {
+            if (state.arrayValores.length > 0 ) {
                 state.valorTotal = state.arrayValores.reduce((x, i) => parseFloat(x) + parseFloat(i))
+            }else{
+                state.valorTotal = 0;
             }
-
         },
         sumarItem: (state, action) => {
 
@@ -218,7 +217,6 @@ const SucursalesSlice = createSlice({
                 if (state.consumible[position]) {
                     state.arrayValores[position] = ValoresASumar
                 }
-
             }
 
         },
@@ -241,8 +239,6 @@ const SucursalesSlice = createSlice({
                         state.arrayValores[position] = ValoresARestar
                     }
                 }
-
-
             }
         },
         eliminarItem: (state, action) => {
