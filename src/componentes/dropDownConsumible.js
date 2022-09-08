@@ -23,13 +23,11 @@ const DropDownConsumable = () => {
   const handleSelectChange = (event) => {
     
     const datos = {
-      idConsumible : parseInt(event.value),
       idSucursal :  parseInt(stateReserva.reserva.hotelCod) 
     }
 
     dispatch(Consumibles(datos))
     setModalOn(true)
-    
   }
 
   return (

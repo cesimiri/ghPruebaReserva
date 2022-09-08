@@ -7,8 +7,7 @@ const Consumibles = createAsyncThunk("consumibles/PostConsumibles", async (datos
     const respuesta = await instaciaAxios.get("/Consumible.php",{
         params: {
             metodo: "ListarConsumible",
-            ...datosConSucu,
-              
+            ...datosConSucu,   
         }
         
     })

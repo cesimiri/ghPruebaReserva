@@ -51,16 +51,8 @@ const initialState = {
     buscador: '',
     seleccionProductos: [
         {
-            id: 1740,
-            nombre: 'PLATOS A LA CARTA'
-        },
-        {
-            id: 1741,
-            nombre: 'BEBIDAS'
-        },
-        {
-            id: 1742,
-            nombre: 'OTROS'
+            id: 1,
+            nombre: 'Productos'
         },
     ],
     arrayProductosSelect: [],
@@ -88,12 +80,18 @@ const SucursalesSlice = createSlice({
             // state.buscador = algo
 
             state.searchProduct = state.consumible.filter((elemento) => {
-
                 // console.log(elemento.prod_nom_prod)
                 if (elemento.prod_nom_prod != null) {
                     return elemento.prod_nom_prod.toString().toLowerCase().includes(algo.toLowerCase())
                 }
             })
+        },
+        setProductosPage: (state, action) => {
+            let { pagina, limite } = action.payload
+
+            if (parseInt(limite) == 0) limite = 10
+
+            state.searchProduct = state.consumible.slice((pagina - 1) * limite, pagina * limite)                    
         },
         setClienteNombre: (state, action) => {
             const algo = action.payload
@@ -114,15 +112,7 @@ const SucursalesSlice = createSlice({
         setClienteDireccion: (state, action) => {
             const algo = action.payload
             state.reserva.clienteDireccion = algo
-        },
-        setProductosPage: (state, action) => {
-            let { pagina, limite } = action.payload
-
-            if (parseInt(limite) == 0) limite = 10
-
-            state.searchProduct = state.consumible.slice((pagina - 1) * limite, pagina * limite)
-
-        },
+        },        
         tipoHabitacionesState: (state, action) => {
             const id = 2
             state.tipoHabitaciones.id = id
@@ -275,18 +265,21 @@ const SucursalesSlice = createSlice({
         [Consumibles.fulfilled]: (state, action) => {
             state.isLoading = false
 
-            const { estado, mensaje, data } = action.payload
+            const { estado, mensaje, data } = action.payload        
 
             if (estado === 1) {
                 // consumible es el nombre que se le dio al array en la clase CConsumible array('consumible' => $exec));
                 const { consumible } = data
-                // console.log(consumible) para mapear el array de objeto y traer los campos con valor
-                consumible.map((i)=>{
-                    if(i.columna){
-                        state.consumible.push(i)
+                // state.consumible = []
+                console.log(consumible) 
+                consumible.map((i, x)=>{
+                    if(i.columna != undefined){
+                        // console.log(x)
+                        // console.log(i)
+                        state.consumible = [...consumible]
                     }
                 })
-                // state.consumible = [...consumible]
+                //state.consumible.push(i)
             }
         },
         [Decoracion.pending]: (state, action) => {
