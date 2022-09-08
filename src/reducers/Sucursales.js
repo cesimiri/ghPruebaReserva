@@ -272,13 +272,17 @@ const SucursalesSlice = createSlice({
                 const { consumible } = data
                 // state.consumible = []
                 console.log(consumible) 
-                consumible.map((i, x)=>{
-                    if(i.columna != undefined){
-                        // console.log(x)
-                        // console.log(i)
-                        state.consumible = [...consumible]
-                    }
-                })
+                state.consumible.push(...consumible)
+                // consumible.map((i, x)=>{
+                    
+                //     console.log( "NAN: ", (i.columna != null) )
+
+                //     if((i.columna != null)){
+                //         // console.log(x)
+                //         // console.log(i)
+                //         state.consumible = [...consumible]
+                //     }
+                // })
                 //state.consumible.push(i)
             }
         },

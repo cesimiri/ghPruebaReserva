@@ -59,7 +59,7 @@ const ModalConsumibles = ({ setModalOn, setChoice }) => {
                             <h5 className="text-xl font-bold leading-none text-gray-900 dark:text-white pb-2">Consumibles</h5>
                             <input
                                 type="text"
-                                className="border border-gray-700 p-2 rounded mb-5"
+                                className="border border-gray-700 p-2 rounded mb-5 w-80"
                                 placeholder="Buscar"
                                 onChange={handleChange}
                             />

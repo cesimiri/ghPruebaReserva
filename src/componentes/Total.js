@@ -85,7 +85,7 @@ const Total = () => {
                                                             <Button className='border border-cyan-700 bg-red-700 hover:bg-red-800 text-white w-5'
                                                                 onClick={() => dispatch(restarItem(item))}>-
                                                             </Button>
-                                                            <p>{item.prod_cant}</p>
+                                                            <p className=''>{item.prod_cant}</p>
                                                             <Button className='border bg-blue-700 hover:bg-blue-800 text-white w-5'
                                                                 onClick={() => dispatch(sumarItem(item))}>+
                                                             </Button>
@@ -93,7 +93,7 @@ const Total = () => {
                                                         <td>
                                                         </td>  
                                                         <td>
-                                                            ${(parseFloat(item.columna) * item.prod_cant).toFixed(2)}
+                                                            <p className='text-sm pl-5'>${(parseFloat(item.columna) * item.prod_cant).toFixed(2)}</p>
                                                         </td>
                                                         <td>
                                                             <Button className='border border-cyan-700 bg-red-700 hover:bg-red-800 text-white w-5'
