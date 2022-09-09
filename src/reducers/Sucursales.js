@@ -13,7 +13,7 @@ const initialState = {
         dropDownConsumible: false,
     },
     reserva: {
-        ClienteNombres: '',
+        clienteNombres: '',
         clienteApellidos: '',
         clienteEmail: '',
         clienteTelefono: '',
@@ -26,21 +26,7 @@ const initialState = {
         decoracionCod: 0,
         decoracionNombre: '',
         decoracionPrecio: 0,
-        listaConsumibles: [
-            {
-                productoCod: 0,
-                productoCantidad: 1,
-                productoNombre: '',
-                productoPrecio: 0,
-
-            },
-        ],
-        datosCliente: {
-            clienteNombre: '',
-            clienteApellidos: '',
-            clienteCedula: '',
-            clientetelefono: '',
-        },
+          
     },
     isLoading: false,
     sucursales: [],
@@ -89,7 +75,7 @@ const SucursalesSlice = createSlice({
         setProductosPage: (state, action) => {
             let { pagina, limite } = action.payload
 
-            if (parseInt(limite) == 0) limite = 10
+            if (parseInt(limite) === 0) limite = 10
 
             state.searchProduct = state.consumible.slice((pagina - 1) * limite, pagina * limite)                    
         },
@@ -146,7 +132,7 @@ const SucursalesSlice = createSlice({
             } else {
                 position = state.arrayProductosSelect.findIndex(item => parseInt(item.prod_cod_prod) === parseInt(prod_cod_prod))
 
-                let item = action.payload
+                const item = action.payload
 
                 item.prod_can_prod = item.prod_can_prod + 1
 
@@ -166,7 +152,6 @@ const SucursalesSlice = createSlice({
             state.reserva.cuartoCod = tpHb.tiha_cod_tiha
             state.reserva.cuartoNombre = tpHb.tiha_nom_tiha
             state.reserva.cuartoPrecio = tpHb.tiha_cos_maxi
-
         },
         datosHotelCod: (state, action) => {
             const dh = action.payload
@@ -249,7 +234,6 @@ const SucursalesSlice = createSlice({
         },
         [Sucursales.fulfilled]: (state, action) => {
             state.isLoading = false
-
             // console.log(action.payload)
             const { estado, mensaje, data } = action.payload
 
@@ -271,7 +255,6 @@ const SucursalesSlice = createSlice({
                 // consumible es el nombre que se le dio al array en la clase CConsumible array('consumible' => $exec));
                 const { consumible } = data
                 // state.consumible = []
-                console.log(consumible) 
                 state.consumible.push(...consumible)
                 // consumible.map((i, x)=>{
                     

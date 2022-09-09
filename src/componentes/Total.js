@@ -17,7 +17,6 @@ const Total = () => {
     const iva = parseFloat(b).toFixed(2)
     const to = parseFloat(subTotal) + parseFloat(iva)
     const total = parseFloat(to).toFixed(2)
-
     useEffect(() => {
         dispatch(sumaTotCons())
     }, [dispatch, stateReserva.arrayProductosSelect])
@@ -51,7 +50,7 @@ const Total = () => {
                                 </table>
                                 <li className="py-3 sm:py-0">
                                     <b>CONSUMIBLES</b>
-                                    <div className='overflow-x-auto relative pb-3'>
+                                    <div className='overflow-y-scroll h-56 relative pb-3'>
                                         <table className='border'>
                                             <thead>
                                                 <tr>
@@ -117,7 +116,7 @@ const Total = () => {
                                     <tr>
                                         <th className='w-28  '>SubTotal:</th>
                                         <th className='w-60 '></th>
-                                        <th className='w-24 font-normal'>${subTotal.toFixed(2)}</th>
+                                        <th className='w-24 font-normal pl-1'>${subTotal.toFixed(2)}</th>
                                     </tr>
                                 </table>
 
@@ -125,7 +124,7 @@ const Total = () => {
                                     <tr>
                                         <th className='w-28 '>I.V.A:</th>
                                         <th className='w-60 '></th>
-                                        <th className='w-24 font-normal'>${iva}</th>
+                                        <th className='w-24 font-normal pl-3'>${iva}</th>
                                     </tr>
                                 </table>
                                 <table className='mb-2'>

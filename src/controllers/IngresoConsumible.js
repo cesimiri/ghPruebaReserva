@@ -1,18 +1,17 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 import instaciaAxios from '../api/conexion';
-// se sacó el idSucursal
 
-const Consumibles = createAsyncThunk("consumibles/PostConsumibles", async (datosConSucu , datosLista ) =>{
+const IngresoConsumible = createAsyncThunk("consumibles/PostConsumibles", async ( datosLista ) =>{
     const respuesta = await instaciaAxios.get("/Consumible.php",{
         params: {
-            metodo: "ListarConsumible",
-            ...datosConSucu,
+            metodo: "IngresarConsumible",    
+            ...datosLista,      
         }
-
     })
+    console.log(datosLista.arrayConsumible)
     // console.log(respuesta.data)
     return respuesta.data
 })
 
-export default Consumibles;
+export default IngresoConsumible;

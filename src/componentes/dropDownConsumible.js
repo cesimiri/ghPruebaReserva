@@ -9,6 +9,7 @@ import { useDispatch } from "react-redux";
 import Consumibles from "../controllers/Consumibles";
 import ModalConsumibles from "./ModalConsumables";
 
+
 const DropDownConsumable = () => {
   //state.reserva o como se llame en el store
   const hotelesState = useSelector(state => state.sucursales)
@@ -18,10 +19,7 @@ const DropDownConsumable = () => {
   const stateReserva = useSelector(state => state.sucursales)
   const dispatch = useDispatch();
 
-  
-
   const handleSelectChange = (event) => {
-    
     const datos = {
       idSucursal :  parseInt(stateReserva.reserva.hotelCod) 
     }
@@ -29,7 +27,7 @@ const DropDownConsumable = () => {
     dispatch(Consumibles(datos))
     setModalOn(true)
   }
-
+  
   return (
     <>
       {

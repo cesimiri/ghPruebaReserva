@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux/'
 import {setClienteNombre,setClienteApellidos,setClienteEmail,setclienteTelefono, setClienteDireccion,} from '../reducers/Sucursales'
+import IngresoConsumible from "../controllers/IngresoConsumible";
 
 const DatosCliente = () => {
     const stateReserva = useSelector(state => state.sucursales)
@@ -22,7 +23,12 @@ const DatosCliente = () => {
         dispatch(setClienteDireccion(e.target.value))    
     }
     const enviar = () =>{
+        const datosConsumibles = {
+            arrayConsumible : stateReserva.arrayProductosSelect    
+        }
+        dispatch(IngresoConsumible(datosConsumibles))
     }
+    // console.log(stateReserva.arrayProductosSelect)
     return (
         <>
             {
