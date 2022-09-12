@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux/'
 import {setClienteNombre,setClienteApellidos,setClienteEmail,setclienteTelefono, setClienteDireccion,} from '../reducers/Sucursales'
 import IngresoConsumible from "../controllers/IngresoConsumible";
+import IngresoCliente from '../controllers/IngresoCliente';
 
 const DatosCliente = () => {
     const stateReserva = useSelector(state => state.sucursales)
@@ -24,11 +25,21 @@ const DatosCliente = () => {
     }
     const enviar = () =>{
         const datosConsumibles = {
-            arrayConsumible : stateReserva.arrayProductosSelect    
+            // totalConsumible : parseFloat(stateReserva.valorTotal),
+            arrayConsumible : JSON.stringify(stateReserva.arrayProductosSelect) ,  
         }
-        dispatch(IngresoConsumible(datosConsumibles))
+        //dispatch(IngresoConsumible(datosConsumibles))
+
+        const datosParaLaReserva = {
+           nombres : stateReserva.reserva.clienteNombres , 
+           apellidos : stateReserva.reserva.clienteApellidos, 
+           email : stateReserva.reserva.clienteEmail, 
+           telefono : stateReserva.reserva.clienteTelefono, 
+           direccion : stateReserva.reserva.clienteDireccion, 
+        }
+        dispatch(IngresoCliente(datosParaLaReserva))
     }
-    // console.log(stateReserva.arrayProductosSelect)
+
     return (
         <>
             {
@@ -38,7 +49,7 @@ const DatosCliente = () => {
                             <div className="px-4 py-5 bg-white sm:p-6">
                                 <div className="grid grid-cols-6 gap-6">
                                     <div className="col-span-6 sm:col-span-3">
-                                        <label for="first_name" className="block text-sm font-medium text-gray-700">Nombre</label>
+                                        <label  className="block text-sm font-medium text-gray-700">Nombre</label>
                                         <input 
                                         type="text" 
                                         className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-black rounded-md border " 
@@ -47,7 +58,7 @@ const DatosCliente = () => {
                                     </div>
 
                                     <div className="col-span-6 sm:col-span-3">
-                                        <label for="last_name" className="block text-sm font-medium text-gray-700">Apellidos</label>
+                                        <label className="block text-sm font-medium text-gray-700">Apellidos</label>
                                         <input 
                                         type="text" 
                                         className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-black rounded-md border" 
@@ -56,7 +67,7 @@ const DatosCliente = () => {
                                     </div>
 
                                     <div className="col-span-6 sm:col-span-3">
-                                        <label for="city" className="block text-sm font-medium text-gray-700">E-mail</label>
+                                        <label className="block text-sm font-medium text-gray-700">E-mail</label>
                                         <input 
                                         type="text" 
                                         className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-black rounded-md border" 
@@ -65,7 +76,7 @@ const DatosCliente = () => {
                                     </div>
 
                                     <div className="col-span-6 sm:col-span-3 ">
-                                        <label for="state" className="block text-sm font-medium text-gray-700">Telefono</label>
+                                        <label  className="block text-sm font-medium text-gray-700">Telefono</label>
                                         <input 
                                         type="text" 
                                         className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-black rounded-md border" 
@@ -74,7 +85,7 @@ const DatosCliente = () => {
                                     </div>
 
                                     <div className="col-span-6">
-                                        <label for="street_address" className="block text-sm font-medium text-gray-700">Dirección</label>
+                                        <label  className="block text-sm font-medium text-gray-700">Dirección</label>
                                         <input 
                                         type="text" 
                                         className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-black rounded-md border" 

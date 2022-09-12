@@ -26,7 +26,6 @@ const initialState = {
         decoracionCod: 0,
         decoracionNombre: '',
         decoracionPrecio: 0,
-          
     },
     isLoading: false,
     sucursales: [],

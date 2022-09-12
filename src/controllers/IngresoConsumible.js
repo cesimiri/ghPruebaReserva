@@ -9,7 +9,6 @@ const IngresoConsumible = createAsyncThunk("consumibles/PostConsumibles", async 
             ...datosLista,      
         }
     })
-    console.log(datosLista.arrayConsumible)
     // console.log(respuesta.data)
     return respuesta.data
 })
