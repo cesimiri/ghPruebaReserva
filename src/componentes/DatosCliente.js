@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux/'
 import {setClienteNombre,setClienteApellidos,setClienteEmail,setclienteTelefono, setClienteDireccion,} from '../reducers/Sucursales'
 import IngresoConsumible from "../controllers/IngresoConsumible";
 import IngresoCliente from '../controllers/IngresoCliente';
+import IngresoCabecera from '../controllers/IngresoCabecera';
 
 const DatosCliente = () => {
     const stateReserva = useSelector(state => state.sucursales)
@@ -37,7 +38,22 @@ const DatosCliente = () => {
            telefono : stateReserva.reserva.clienteTelefono, 
            direccion : stateReserva.reserva.clienteDireccion, 
         }
-        dispatch(IngresoCliente(datosParaLaReserva))
+        //dispatch(IngresoCliente(datosParaLaReserva))
+
+        const datosEncabezado = {
+            codSucu : parseInt(stateReserva.reserva.hotelCod) ,
+            cabres_clires : 1 , 
+            codDeco : parseInt(stateReserva.reserva.decoracionCod) , 
+            precioDeco : parseFloat(stateReserva.reserva.decoracionPrecio) , 
+            codHabitacion : parseInt(stateReserva.reserva.cuartoCod) , 
+            precioHabitacion : parseFloat(stateReserva.reserva.cuartoPrecio) , 
+            totalConsumible : parseFloat(stateReserva.valorTotal) , 
+            subTotal : parseFloat(stateReserva.reserva.subTotal) ,
+            iva : parseFloat(stateReserva.reserva.iva) , 
+            total : parseFloat(stateReserva.reserva.total) ,
+        }
+        dispatch(IngresoCabecera(datosEncabezado))
+        console.log(datosEncabezado)
     }
 
     return (
@@ -98,7 +114,7 @@ const DatosCliente = () => {
                                 <button type="submit" 
                                 className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                                 onClick={enviar}>
-                                    Save
+                                    Guardar
                                 </button>
                             </div>
                         </div>

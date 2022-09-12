@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Button } from 'reactstrap';
-import { restarItem, sumarItem, sumaTotCons, eliminarItem } from '../reducers/Sucursales'
+import { restarItem, sumarItem, sumaTotCons, eliminarItem , setSubTotal, setIva , setTotal } from '../reducers/Sucursales'
 
 const Total = () => {
     const stateReserva = useSelector(state => state.sucursales)
@@ -13,12 +13,16 @@ const Total = () => {
     const a = parseFloat(precioCuarto) + parseFloat(precioDecoracion)
     const c = parseFloat(stateReserva.valorTotal)
     const subTotal = parseFloat(a) + parseFloat(c)
+
     const b = parseFloat(subTotal) * 0.12
     const iva = parseFloat(b).toFixed(2)
     const to = parseFloat(subTotal) + parseFloat(iva)
     const total = parseFloat(to).toFixed(2)
     useEffect(() => {
         dispatch(sumaTotCons())
+        dispatch(setSubTotal(subTotal))
+        dispatch(setIva(iva))
+        dispatch(setTotal(total))
     }, [dispatch, stateReserva.arrayProductosSelect])
     return (
         <>

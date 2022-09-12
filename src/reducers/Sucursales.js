@@ -26,6 +26,10 @@ const initialState = {
         decoracionCod: 0,
         decoracionNombre: '',
         decoracionPrecio: 0,
+
+        subTotal :0, 
+        iva : 0, 
+        total : 0 ,
     },
     isLoading: false,
     sucursales: [],
@@ -77,6 +81,18 @@ const SucursalesSlice = createSlice({
             if (parseInt(limite) === 0) limite = 10
 
             state.searchProduct = state.consumible.slice((pagina - 1) * limite, pagina * limite)                    
+        },
+        setSubTotal : (state, action) => {
+            const algo = action.payload
+            state.reserva.subTotal = algo
+        },
+        setIva : (state, action) => {
+            const algo = action.payload
+            state.reserva.iva = algo
+        },
+        setTotal : (state, action) => {
+            const algo = action.payload
+            state.reserva.total = algo
         },
         setClienteNombre: (state, action) => {
             const algo = action.payload
@@ -306,6 +322,7 @@ export const { sucursalesState, consumiblesState, setProductosPage,
     changeProducto, datosCuarto, datosHotelCod, datosHotelNombre, datosDecoracion,
     sumarItem, restarItem, sumaTotCons, eliminarItem,
     setClienteNombre, setClienteApellidos, setClienteEmail, setclienteTelefono, setClienteDireccion,
+    setSubTotal, setIva , setTotal
 }
     = SucursalesSlice.actions;
 export default SucursalesSlice.reducer;
