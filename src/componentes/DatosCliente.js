@@ -31,14 +31,14 @@ const DatosCliente = () => {
         }
         //dispatch(IngresoConsumible(datosConsumibles))
 
-        const datosParaLaReserva = {
+        const datosCliente = {
            nombres : stateReserva.reserva.clienteNombres , 
            apellidos : stateReserva.reserva.clienteApellidos, 
            email : stateReserva.reserva.clienteEmail, 
            telefono : stateReserva.reserva.clienteTelefono, 
            direccion : stateReserva.reserva.clienteDireccion, 
         }
-        //dispatch(IngresoCliente(datosParaLaReserva))
+        //dispatch(IngresoCliente(datosCliente))
 
         const datosEncabezado = {
             codSucu : parseInt(stateReserva.reserva.hotelCod) ,
@@ -52,7 +52,7 @@ const DatosCliente = () => {
             iva : parseFloat(stateReserva.reserva.iva) , 
             total : parseFloat(stateReserva.reserva.total) ,
         }
-        dispatch(IngresoCabecera(datosEncabezado))
+        //dispatch(IngresoCabecera(datosEncabezado))
         console.log(datosEncabezado)
     }
 
