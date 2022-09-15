@@ -10,19 +10,23 @@ const Total = () => {
     const precioCuarto = stateReserva.reserva.cuartoPrecio;
     const precioDecoracion = stateReserva.reserva.decoracionPrecio
 
-    const a = parseFloat(precioCuarto) + parseFloat(precioDecoracion)
-    const c = parseFloat(stateReserva.valorTotal)
-    const subTotal = parseFloat(a) + parseFloat(c)
+    const a = parseFloat(precioCuarto) + parseFloat(precioDecoracion) + parseFloat(stateReserva.valorTotal)
 
-    const b = parseFloat(subTotal) * 0.12
-    const iva = parseFloat(b).toFixed(2)
-    const to = parseFloat(subTotal) + parseFloat(iva)
-    const total = parseFloat(to).toFixed(2)
+    
+    const subTotal = parseFloat(a)
+    console.log("Subtotal: ",subTotal)
+    const b = (subTotal) * 0.12
+    // const iva = parseFloat(b).toFixed(2)
+
+    const iva = b.toFixed(2)
+    const to = (subTotal) + parseFloat(iva)
+   
+    const total = to.toFixed(2)
     useEffect(() => {
         dispatch(sumaTotCons())
-        dispatch(setSubTotal(subTotal))
-        dispatch(setIva(iva))
-        dispatch(setTotal(total))
+        // dispatch(setSubTotal(subTotal ))
+        // dispatch(setIva(iva))
+        // dispatch(setTotal(total))
     }, [dispatch, stateReserva.arrayProductosSelect])
     return (
         <>

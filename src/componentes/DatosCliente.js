@@ -36,18 +36,19 @@ const DatosCliente = () => {
             direccion: stateReserva.reserva.clienteDireccion,
 
             codSucu: parseInt(stateReserva.reserva.hotelCod),
-            cabres_clires: 1,
+            // cabres_clires: 1,
             codDeco: parseInt(stateReserva.reserva.decoracionCod),
             precioDeco: parseFloat(stateReserva.reserva.decoracionPrecio),
             codHabitacion: parseInt(stateReserva.reserva.cuartoCod),
             precioHabitacion: parseFloat(stateReserva.reserva.cuartoPrecio),
             totalConsumible: parseFloat(stateReserva.valorTotal),
-            subTotal: parseFloat(stateReserva.reserva.subTotal),
+            subTotal: parseFloat(stateReserva.reserva.subTotal) ,
             iva: parseFloat(stateReserva.reserva.iva),
             total: parseFloat(stateReserva.reserva.total),
 
             arrayConsumible: JSON.stringify(stateReserva.arrayProductosSelect),
         }
+        // console.log(envioDatos)
         dispatch(IngresoDatos(envioDatos))
     }
 
@@ -63,7 +64,7 @@ const DatosCliente = () => {
                                         <label className="block text-sm font-medium text-gray-700">Nombre</label>
                                         <input
                                             type="text"
-                                            className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-black rounded-md border "
+                                            className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full h-8 shadow-sm sm:text-sm border-black rounded-sm border "
                                             placeholder="Nombres"
                                             onChange={handleChangeNombre} />
                                     </div>
@@ -72,7 +73,7 @@ const DatosCliente = () => {
                                         <label className="block text-sm font-medium text-gray-700">Apellidos</label>
                                         <input
                                             type="text"
-                                            className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-black rounded-md border"
+                                            className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full h-8 shadow-sm sm:text-sm border-black rounded-sm border"
                                             placeholder="Apellidos"
                                             onChange={handleChangeApellidos} />
                                     </div>
@@ -81,7 +82,7 @@ const DatosCliente = () => {
                                         <label className="block text-sm font-medium text-gray-700">E-mail</label>
                                         <input
                                             type="text"
-                                            className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-black rounded-md border"
+                                            className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full h-8  shadow-sm sm:text-sm border-black rounded-sm border"
                                             placeholder="E-mail"
                                             onChange={handleChangeEmail} />
                                     </div>
@@ -90,7 +91,7 @@ const DatosCliente = () => {
                                         <label className="block text-sm font-medium text-gray-700">Telefono</label>
                                         <input
                                             type="text"
-                                            className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-black rounded-md border"
+                                            className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full h-8  shadow-sm sm:text-sm border-black rounded-sm border"
                                             placeholder="Telefono"
                                             onChange={handleChangeTelefono} />
                                     </div>
@@ -99,7 +100,7 @@ const DatosCliente = () => {
                                         <label className="block text-sm font-medium text-gray-700">Dirección</label>
                                         <input
                                             type="text"
-                                            className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-black rounded-md border"
+                                            className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full h-8  shadow-sm sm:text-sm border-black rounded-sm border"
                                             placeholder="Dirección"
                                             onChange={handleChangeDireccion} />
                                     </div>

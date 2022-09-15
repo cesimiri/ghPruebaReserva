@@ -3,6 +3,7 @@ import Sucursales from "../controllers/Sucursales";
 import TipoHabitaciones from "../controllers/Tipohabitaciones";
 import Decoracion from "../controllers/Decoracion";
 import Consumibles from "../controllers/Consumibles";
+import IngresoDatos from "../controllers/IngresoDatos";
 const initialState = {
 
     stateComponent: {
@@ -72,6 +73,8 @@ const SucursalesSlice = createSlice({
                 // console.log(elemento.prod_nom_prod)
                 if (elemento.prod_nom_prod != null) {
                     return elemento.prod_nom_prod.toString().toLowerCase().includes(algo.toLowerCase())
+                }else{
+                    console.log("esto")
                 }
             })
         },
@@ -316,6 +319,15 @@ const SucursalesSlice = createSlice({
             }
 
         },
+
+
+        [IngresoDatos.pending]: state =>{
+        //  DIBUJAR RELOJ
+        },
+        [IngresoDatos.fulfilled]: (state, {payload})=>{
+            state.Consumibles = []
+            state.reserva = initialState.reserva
+        }
     }
 
 })
