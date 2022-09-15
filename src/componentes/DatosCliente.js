@@ -1,10 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux/'
 import { setClienteNombre, setClienteApellidos, setClienteEmail, setclienteTelefono, setClienteDireccion, } from '../reducers/Sucursales'
-import IngresoConsumible from "../controllers/IngresoConsumible";
-import IngresoCliente from '../controllers/IngresoCliente';
-import IngresoCabecera from '../controllers/IngresoCabecera';
-import IngresoDetalle from '../controllers/IngresoDetalle';
 import IngresoDatos from '../controllers/IngresoDatos';
 // import { parse } from 'date-fns';
 
@@ -29,49 +25,9 @@ const DatosCliente = () => {
     }
 
     const enviar = () => {
-        const datosConsumibles = {
-            // totalConsumible : parseFloat(stateReserva.valorTotal),
-            arrayConsumible: JSON.stringify(stateReserva.arrayProductosSelect),
-        }
-        // dispatch(IngresoConsumible(datosConsumibles))
-
-        const datosCliente = {
-            nombres: stateReserva.reserva.clienteNombres,
-            apellidos: stateReserva.reserva.clienteApellidos,
-            email: stateReserva.reserva.clienteEmail,
-            telefono: stateReserva.reserva.clienteTelefono,
-            direccion: stateReserva.reserva.clienteDireccion,
-        }
-        //dispatch(IngresoCliente(datosCliente))
-
-        const datosEncabezado = {
-            codSucu: parseInt(stateReserva.reserva.hotelCod),
-            cabres_clires: 1,
-            codDeco: parseInt(stateReserva.reserva.decoracionCod),
-            precioDeco: parseFloat(stateReserva.reserva.decoracionPrecio),
-            codHabitacion: parseInt(stateReserva.reserva.cuartoCod),
-            precioHabitacion: parseFloat(stateReserva.reserva.cuartoPrecio),
-            totalConsumible: parseFloat(stateReserva.valorTotal),
-            subTotal: parseFloat(stateReserva.reserva.subTotal),
-            iva: parseFloat(stateReserva.reserva.iva),
-            total: parseFloat(stateReserva.reserva.total),
-        }
-        //dispatch(IngresoCabecera(datosEncabezado))
-
-        const datosDetalle = {
-            codCabecera: parseInt(1),
-            codlistadoConsumible: parseInt(1),
-            cantidad: parseInt(2),
-            precio: parseFloat(stateReserva.valorTotal),
-            iva: parseFloat(stateReserva.reserva.iva),
-            total: parseFloat(stateReserva.reserva.total),
-        }
-        //dispatch(IngresoDetalle(datosDetalle))
-
         // reiniciar pagina
         // window.location.reload();
         //
-
         const envioDatos = {
             nombres: stateReserva.reserva.clienteNombres,
             apellidos: stateReserva.reserva.clienteApellidos,
@@ -93,8 +49,6 @@ const DatosCliente = () => {
             arrayConsumible: JSON.stringify(stateReserva.arrayProductosSelect),
         }
         dispatch(IngresoDatos(envioDatos))
-
-
     }
 
     return (

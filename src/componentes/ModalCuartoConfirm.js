@@ -19,9 +19,7 @@ const Modal = ({ setModalOn, setChoice, position }) => {
     const handleCancelClick = () => {
         setChoice(false)
         setModalOn(false)
-
     }
-
     return (
 
         <div className="   bg-gray-600 opacity-95 fixed inset-0 z-50   ">

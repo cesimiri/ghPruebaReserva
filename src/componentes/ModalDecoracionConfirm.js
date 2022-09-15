@@ -13,7 +13,7 @@ const ModalDecoracionconfim = ({ setModalOn, setChoice }) => {
     const handleOKClick = () => {
         // setChoice (true)
         setModalOn (false)
-        // dispatch(Decoracion())
+        // dispatch(Decoracion())    
 
         dispatch(stateDecoracion(true))  
     }
@@ -24,7 +24,7 @@ const ModalDecoracionconfim = ({ setModalOn, setChoice }) => {
 
     return (
 
-        <div className="   bg-gray-600 opacity-95 fixed inset-0 z-50   ">
+        <div className=" bg-gray-600 opacity-50 fixed inset-0 z-50   ">
 
             <div className="flex h-screen justify-center items-center ">
 

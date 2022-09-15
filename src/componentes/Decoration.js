@@ -15,8 +15,6 @@ const Decoration = () => {
     const [modalOn, setModalOn] = useState(false);
     const [choise, setChoice] = useState(false);
 
-  
-
     const clicked = (position) => {
         setModalOn(true)
         dispatch(decoration)
