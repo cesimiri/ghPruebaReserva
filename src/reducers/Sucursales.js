@@ -260,8 +260,7 @@ const SucursalesSlice = createSlice({
 
                 const { sucursales } = data
                 state.sucursales = [...sucursales]
-
-                // state.sucursales =[]
+                
             }
         },
         [Consumibles.pending]: (state, action) => {
@@ -269,9 +268,7 @@ const SucursalesSlice = createSlice({
         },
         [Consumibles.fulfilled]: (state, action) => {
             state.isLoading = false
-
             const { estado, mensaje, data } = action.payload        
-
             if (estado === 1) {
                 // consumible es el nombre que se le dio al array en la clase CConsumible array('consumible' => $exec));
                 const { consumible } = data
@@ -281,7 +278,7 @@ const SucursalesSlice = createSlice({
                     
                 //     console.log( "NAN: ", (i.columna != null) )
 
-                //     if((i.columna != null)){
+                //     if((i.columna != null)){ 
                 //         // console.log(x)
                 //         // console.log(i)
                 //         state.consumible = [...consumible]

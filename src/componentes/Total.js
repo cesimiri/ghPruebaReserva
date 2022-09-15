@@ -35,25 +35,27 @@ const Total = () => {
                     <div style={{ "width": "32rem" }} className="ml-2 p-3 w-96 bg-white rounded-lg border shadow-md  dark:bg-gray-800 dark:border-gray-700 absolute  ">
                         <div className="flow-root">
                             <ul className="divide-y divide-gray-700 dark:divide-gray-700 ">
-                                <table className='border mb-2'>
-                                    <tr className=' '>
+                                <table className=' mb-2'>
+                                    <tr>
                                         <th className='w-28 '>HOTEL : </th>
                                         <th className='w-60 font-normal'>{stateReserva.reserva.hotelNombre}</th>
-                                        <th className='w-24 '></th>
+                                        <th className='w-20 font-normal'></th>
                                     </tr>
                                 </table>
                                 <table className='mb-2'>
                                     <tr>
                                         <th className='w-28  '> HABITACIÓN: </th>
                                         <th className='w-60 font-normal'>{stateReserva.reserva.cuartoNombre}</th>
-                                        <th className='w-24 font-normal'>${parseFloat(precioCuarto).toFixed(2)}</th>
+                                        <th className='w-14 font-normal text-right'>${parseFloat(precioCuarto).toFixed(2)}</th>
+                                        <th className='w-20 font-normal'></th>
                                     </tr>
                                 </table>
                                 <table className='mb-2'>
                                     <tr>
                                         <th className='w-28 '> DECORACIÓN: </th>
                                         <th className='w-60 font-normal'>{stateReserva.reserva.decoracionNombre}</th>
-                                        <th className='w-24 font-normal'>${parseFloat(precioDecoracion).toFixed(2)}</th>
+                                        <th className='w-14 font-normal text-right'>${parseFloat(precioDecoracion).toFixed(2)}</th>
+                                        <th className='w-20 font-normal'></th>  
                                     </tr>
                                 </table>
                                 <li className="py-3 sm:py-0">
@@ -100,7 +102,7 @@ const Total = () => {
                                                         <td>
                                                         </td>  
                                                         <td>
-                                                            <p className='text-sm pl-5'>${(parseFloat(item.columna) * item.prod_cant).toFixed(2)}</p>
+                                                            <p className='  font-normal'>${(parseFloat(item.columna) * item.prod_cant).toFixed(2)}</p>
                                                         </td>
                                                         <td>
                                                             <Button className='border border-cyan-700 bg-red-700 hover:bg-red-800 text-white w-5'
@@ -116,7 +118,8 @@ const Total = () => {
                                         <tr>
                                             <th className='w-28 '></th>
                                             <th className='w-60 '>Total Consumible</th>
-                                            <th className='w-24 font-normal text-gray-900 truncate dark:text-white'>$ {(stateReserva.valorTotal).toFixed(2)}</th>
+                                            <th className='w-14 font-normal text-right dark:text-white'>$ {(stateReserva.valorTotal).toFixed(2)}</th>
+                                            <th className='w-20 font-normal'></th>
                                         </tr>
                                     </table>
                                 </li>
@@ -124,7 +127,8 @@ const Total = () => {
                                     <tr>
                                         <th className='w-28  '>SubTotal:</th>
                                         <th className='w-60 '></th>
-                                        <th className='w-24 font-normal pl-1'>${subTotal.toFixed(2)}</th>
+                                        <th className='w-14 font-normal text-right'>${subTotal.toFixed(2)}</th>
+                                        <th className='w-20 font-normal'></th>
                                     </tr>
                                 </table>
 
@@ -132,7 +136,8 @@ const Total = () => {
                                     <tr>
                                         <th className='w-28 '>I.V.A:</th>
                                         <th className='w-60 '></th>
-                                        <th className='w-24 font-normal pl-3'>${iva}</th>
+                                        <th className='w-14 font-normal text-right'>${iva}</th>
+                                        <th className='w-20 font-normal'></th>
                                     </tr>
                                 </table>
                                 <table className='mb-2'>
@@ -140,6 +145,7 @@ const Total = () => {
                                         <th className='w-28  text-2xl'>Total</th>
                                         <th className='w-60 '></th>
                                         <th className='w-24 text-2xl'>${total}</th>
+                                        <th className='w-20 font-normal'></th>
                                     </tr>
                                 </table>
 

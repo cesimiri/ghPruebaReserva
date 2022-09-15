@@ -25,18 +25,13 @@ const DatosCliente = () => {
     }
 
     const enviar = () => {
-        // reiniciar pagina
-        // window.location.reload();
-        //
         const envioDatos = {
             nombres: stateReserva.reserva.clienteNombres,
             apellidos: stateReserva.reserva.clienteApellidos,
             email: stateReserva.reserva.clienteEmail,
             telefono: stateReserva.reserva.clienteTelefono,
             direccion: stateReserva.reserva.clienteDireccion,
-
             codSucu: parseInt(stateReserva.reserva.hotelCod),
-            // cabres_clires: 1,
             codDeco: parseInt(stateReserva.reserva.decoracionCod),
             precioDeco: parseFloat(stateReserva.reserva.decoracionPrecio),
             codHabitacion: parseInt(stateReserva.reserva.cuartoCod),
@@ -47,9 +42,11 @@ const DatosCliente = () => {
             total: parseFloat(stateReserva.reserva.total),
 
             arrayConsumible: JSON.stringify(stateReserva.arrayProductosSelect),
+         
         }
-        // console.log(envioDatos)
         dispatch(IngresoDatos(envioDatos))
+        //reiniciar pagina
+        window.location.reload();
     }
 
     return (
