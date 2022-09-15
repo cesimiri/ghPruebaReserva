@@ -246,6 +246,7 @@ const SucursalesSlice = createSlice({
     extraReducers: {
         [Sucursales.pending]: (state, action) => {
             state.isLoading = true
+
         },
         [Sucursales.fulfilled]: (state, action) => {
             state.isLoading = false
@@ -256,6 +257,8 @@ const SucursalesSlice = createSlice({
 
                 const { sucursales } = data
                 state.sucursales = [...sucursales]
+
+                // state.sucursales =[]
             }
         },
         [Consumibles.pending]: (state, action) => {
