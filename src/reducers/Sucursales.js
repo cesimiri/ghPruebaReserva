@@ -14,6 +14,8 @@ const initialState = {
         dropDownConsumible: false,
     },
     reserva: {
+        reservaFecha : '',
+        reservaHora : '',
         clienteNombres: '',
         clienteApellidos: '',
         clienteEmail: '',
@@ -56,6 +58,14 @@ const SucursalesSlice = createSlice({
     initialState: initialState,
     reducers: {
         // todos los reduceers aqui 
+        setFecha: (state, action)=>{
+            const algo = action.payload
+            state.reserva.reservaFecha = algo
+        },
+        setHora: (state, action)=>{
+            const algo = action.payload
+            state.reserva.reservaHora = algo
+        },
         sucursalesState: (state, action) => {
             const id = 2
 
@@ -334,7 +344,8 @@ export const { sucursalesState, consumiblesState, setProductosPage,
     changeProducto, datosCuarto, datosHotelCod, datosHotelNombre, datosDecoracion,
     sumarItem, restarItem, sumaTotCons, eliminarItem,
     setClienteNombre, setClienteApellidos, setClienteEmail, setclienteTelefono, setClienteDireccion,
-    setSubTotal, setIva , setTotal
+    setSubTotal, setIva , setTotal , 
+    setFecha , setHora
 }
     = SucursalesSlice.actions;
 export default SucursalesSlice.reducer;

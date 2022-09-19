@@ -10,7 +10,7 @@ import { useDispatch } from 'react-redux';
 import Sucursales from './controllers/Sucursales';
 import DropDownConsumable from './componentes/dropDownConsumible';
 import DatosCliente from './componentes/DatosCliente';
-//import { alpha } from '@material-ui/core/styles'
+import Calendary from './componentes/calendary';
 
 function App() {
 
@@ -32,7 +32,7 @@ function App() {
       </div>
       <div className='float-right pr-40' >
         <br />
-        <p className='text-white'>SELECCIÓN DE FECHA DE RESERVA</p>
+        <Calendary/>
       </div>
       <div className='fixed border-cyan-200 break-words float-left' >
         <Total />

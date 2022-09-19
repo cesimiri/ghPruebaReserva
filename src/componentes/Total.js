@@ -14,10 +14,7 @@ const Total = () => {
 
     
     const subTotal = parseFloat(a)
-    console.log("Subtotal: ",subTotal)
     const b = (subTotal) * 0.12
-    // const iva = parseFloat(b).toFixed(2)
-
     const iva = b.toFixed(2)
     const to = (subTotal) + parseFloat(iva)
    

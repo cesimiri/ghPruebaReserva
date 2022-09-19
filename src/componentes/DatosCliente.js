@@ -23,9 +23,12 @@ const DatosCliente = () => {
     const handleChangeDireccion = e => {
         dispatch(setClienteDireccion(e.target.value))
     }
+    
 
     const enviar = () => {
         const envioDatos = {
+            fecha: stateReserva.reserva.reservaFecha,
+            hora : stateReserva.reserva.reservaHora,
             nombres: stateReserva.reserva.clienteNombres,
             apellidos: stateReserva.reserva.clienteApellidos,
             email: stateReserva.reserva.clienteEmail,
@@ -46,8 +49,10 @@ const DatosCliente = () => {
         }
         dispatch(IngresoDatos(envioDatos))
         //reiniciar pagina
-        window.location.reload();
+        // window.location.reload();
+        console.log(envioDatos);
     }
+    
 
     return (
         <>

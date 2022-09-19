@@ -1,38 +1,42 @@
+//https://mui.com/x/react-date-pickers/getting-started/
+// formato de la fecha https://day.js.org/docs/en/plugin/advanced-format
+//npm install dayjs
+//npm install date-fns
 
-// recurso https://www.youtube.com/watch?v=6tcohUjGSVc
-// npm i @material-ui/pickers --force
-// npm i @date-io/date-fns@1.x date-fns
-// npm i @material-ui/core
+import * as React from 'react';
+import dayjs from 'dayjs';
+import Stack from '@mui/material/Stack';
+import TextField from '@mui/material/TextField';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
+import { useDispatch } from 'react-redux/'
+import { setFecha , setHora } from '../reducers/Sucursales';
 
+const Calendary = () => {
+    // const stateReserva = useSelector(state => state.sucursales)
+    const dispatch = useDispatch()
+    const [value, setValue] = React.useState(dayjs());
 
-// import React from 'react';
-// import { useSelector } from 'react-redux/es/exports';
-// import { useDispatch } from "react-redux";
-// import {DateTimePicker} from '@material-ui/pickers';
-// import { fechaHora } from '../feature/reserva/reservaSlice';
+    const handleChange = (newValue) => {
+        setValue(newValue);
+        dispatch(setFecha(value.format('DD/MM/YYYY')))
+        dispatch(setHora(value.format('HH:mm')))
+    };
 
-// const Calendary =() =>{
-//     const sateHorainicial =  useSelector(state => state.reserva)
+    return (
+        <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <Stack>
+                <DateTimePicker
+                    className='bg-sky-100'
+                    label="Fecha Reserva"
+                    value={value}
+                    onChange={handleChange}
+                    renderInput={(params) => <TextField {...params} />}
+                />
+            </Stack>
+        </LocalizationProvider>
 
-//     const horaInicial = sateHorainicial.horaFecha;
-
-//     const dispatch = useDispatch();
-
-//     const handleChange =(event) =>{
-//         dispatch(fechaHora(event))
-//        //console.log("fechafinal" + event)
-//       }
-//       //{console.log("hola desde aqui "+ horaInicial)}   en el espacio de abajo 
-//     return (
-//         <div className="container">
-//             <div>      
-//                 <DateTimePicker
-//                 value ={horaInicial}
-//                 onChange = {handleChange}
-//                 />
-//             </div>
-//         </div>
-
-//     )
-// }
-// export default Calendary;
+    )
+}
+export default Calendary;
