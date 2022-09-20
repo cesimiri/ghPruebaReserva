@@ -3,8 +3,11 @@ import { useSelector, useDispatch } from 'react-redux/'
 import { setClienteNombre, setClienteApellidos, setClienteEmail, setclienteTelefono, setClienteDireccion, } from '../reducers/Sucursales'
 import IngresoDatos from '../controllers/IngresoDatos';
 // import { parse } from 'date-fns';
+import { useState } from 'react';
+import ModalEnvioDatos from './ModalEnvioDatos';
 
 const DatosCliente = () => {
+
     const stateReserva = useSelector(state => state.sucursales)
     const dispatch = useDispatch()
 
@@ -24,35 +27,13 @@ const DatosCliente = () => {
         dispatch(setClienteDireccion(e.target.value))
     }
     
+    const [modalOn, setModalOn] = useState(false);
 
     const enviar = () => {
-        const envioDatos = {
-            fecha: stateReserva.reserva.reservaFecha,
-            hora : stateReserva.reserva.reservaHora,
-            nombres: stateReserva.reserva.clienteNombres,
-            apellidos: stateReserva.reserva.clienteApellidos,
-            email: stateReserva.reserva.clienteEmail,
-            telefono: stateReserva.reserva.clienteTelefono,
-            direccion: stateReserva.reserva.clienteDireccion,
-            codSucu: parseInt(stateReserva.reserva.hotelCod),
-            codDeco: parseInt(stateReserva.reserva.decoracionCod),
-            precioDeco: parseFloat(stateReserva.reserva.decoracionPrecio),
-            codHabitacion: parseInt(stateReserva.reserva.cuartoCod),
-            precioHabitacion: parseFloat(stateReserva.reserva.cuartoPrecio),
-            totalConsumible: parseFloat(stateReserva.valorTotal),
-            subTotal: parseFloat(stateReserva.reserva.subTotal) ,
-            iva: parseFloat(stateReserva.reserva.iva),
-            total: parseFloat(stateReserva.reserva.total),
-
-            arrayConsumible: JSON.stringify(stateReserva.arrayProductosSelect),
-         
-        }
-        dispatch(IngresoDatos(envioDatos))
+        setModalOn(true)
         //reiniciar pagina
         // window.location.reload();
-        console.log(envioDatos);
     }
-    
 
     return (
         <>
@@ -115,6 +96,7 @@ const DatosCliente = () => {
                                     Guardar
                                 </button>
                             </div>
+                            {modalOn && < ModalEnvioDatos setModalOn={setModalOn} />}
                         </div>
                     </div>
                 ) : (

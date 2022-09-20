@@ -10,11 +10,11 @@ import TextField from '@mui/material/TextField';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
-import { useDispatch } from 'react-redux/'
-import { setFecha , setHora } from '../reducers/Sucursales';
+import { useDispatch , useSelector} from 'react-redux/'
+import { setFecha, setHora , tipoHabitacionesState} from '../reducers/Sucursales';
 
 const Calendary = () => {
-    // const stateReserva = useSelector(state => state.sucursales)
+    const stateReserva = useSelector(state => state.sucursales)
     const dispatch = useDispatch()
     const [value, setValue] = React.useState(dayjs());
 
@@ -22,20 +22,28 @@ const Calendary = () => {
         setValue(newValue);
         dispatch(setFecha(value.format('DD/MM/YYYY')))
         dispatch(setHora(value.format('HH:mm')))
+        dispatch(tipoHabitacionesState())
     };
 
     return (
-        <LocalizationProvider dateAdapter={AdapterDayjs}>
-            <Stack>
-                <DateTimePicker
-                    className='bg-sky-100'
-                    label="Fecha Reserva"
-                    value={value}
-                    onChange={handleChange}
-                    renderInput={(params) => <TextField {...params} />}
-                />
-            </Stack>
-        </LocalizationProvider>
+        < >
+            {
+                stateReserva.stateComponent.dropDownCalendaryState === true ?( 
+                <LocalizationProvider dateAdapter={AdapterDayjs} >
+                    <Stack >
+                        <DateTimePicker
+                            className='bg-sky-100 '
+                            // label="Fecha Reserva"
+                            value={value}
+                            onChange={handleChange}
+                            renderInput={(params) => <TextField {...params} />}
+                        />
+                    </Stack>
+                </LocalizationProvider>) : ( <> </> ) 
+            }
+            
+        </>
+
 
     )
 }

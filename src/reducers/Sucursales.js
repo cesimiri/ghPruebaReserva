@@ -12,6 +12,7 @@ const initialState = {
         consumibleSate: false,
         comestiblesState: false,
         dropDownConsumible: false,
+        dropDownCalendaryState : false, 
     },
     reserva: {
         reservaFecha : '',
@@ -126,6 +127,9 @@ const SucursalesSlice = createSlice({
         setClienteDireccion: (state, action) => {
             const algo = action.payload
             state.reserva.clienteDireccion = algo
+        },
+        dropDownCalendaryState : (state, action) =>{
+            state.stateComponent.dropDownCalendaryState = true
         },        
         tipoHabitacionesState: (state, action) => {
             const id = 2
@@ -138,8 +142,7 @@ const SucursalesSlice = createSlice({
             state.decoracion.id = id
         },
         stateCuarto: (state, action) => {
-            const stateCuarto = action.payload
-            state.stateComponent.tipoHabitacionState = stateCuarto
+            state.stateComponent.tipoHabitacionState = true
         },
         stateDecoracion: (state, action) => {
             const stateDecoracion = action.payload
@@ -328,18 +331,18 @@ const SucursalesSlice = createSlice({
         },
 
 
-        [IngresoDatos.pending]: state =>{
-        //  DIBUJAR RELOJ
-        },
-        [IngresoDatos.fulfilled]: (state, {payload})=>{
-            state.Consumibles = []
-            state.reserva = initialState.reserva
-        }
+        // [IngresoDatos.pending]: state =>{
+        // //  DIBUJAR RELOJ
+        // },
+        // [IngresoDatos.fulfilled]: (state, {payload})=>{
+        //     state.Consumibles = []
+        //     state.reserva = initialState.reserva
+        // }
     }
 
 })
 export const { sucursalesState, consumiblesState, setProductosPage,
-    tipoHabitacionesState, decoracionState, stateCuarto, stateDecoracion,
+    tipoHabitacionesState, decoracionState, stateCuarto, stateDecoracion, dropDownCalendaryState ,
     setBuscador,
     changeProducto, datosCuarto, datosHotelCod, datosHotelNombre, datosDecoracion,
     sumarItem, restarItem, sumaTotCons, eliminarItem,

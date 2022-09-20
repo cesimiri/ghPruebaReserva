@@ -7,7 +7,7 @@ import Select from "react-select";
 import { useSelector } from 'react-redux';
 import { useDispatch } from "react-redux";
 import TipoHabitaciones from "../controllers/Tipohabitaciones";
-import { datosHotelCod, datosHotelNombre } from "../reducers/Sucursales";
+import { datosHotelCod, datosHotelNombre, dropDownCalendaryState } from "../reducers/Sucursales";
 
 const DropDown = () => {
   //state.reserva o como se llame en el store
@@ -22,6 +22,7 @@ const DropDown = () => {
     console.log('el id del local es ' + event.value)
     dispatch(datosHotelCod(event.value))
     dispatch(datosHotelNombre(event.label))
+    dispatch(dropDownCalendaryState())
 
   }
 

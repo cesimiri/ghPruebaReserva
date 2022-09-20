@@ -18,7 +18,7 @@ const ModalConsumibles = ({ setModalOn, setChoice }) => {
         setChoice(false)
         setModalOn(false)
         dispatch(changeProducto(c))
-dispatch( setProductosPage({ pagina: 1, limite:4 } ) )
+        dispatch(setProductosPage({ pagina: 1, limite: 4 }))
     }
     const handleChangePage = (x, i) => {
         dispatch(setProductosPage({ pagina: i, limite }))
@@ -46,13 +46,8 @@ dispatch( setProductosPage({ pagina: 1, limite:4 } ) )
         if (stateReserva.consumible.length > 0) dispatch(setProductosPage({ pagina: 1, limite }))
     }, [stateReserva.consumible])
 
-    
-    
     useEffect(() => {
         dispatch(sumaTotCons())
-        // dispatch(setSubTotal(subTotal ))
-        // dispatch(setIva(iva))
-        // dispatch(setTotal(total))
     }, [dispatch, stateReserva.arrayProductosSelect])
 
     return (
@@ -60,8 +55,8 @@ dispatch( setProductosPage({ pagina: 1, limite:4 } ) )
 
             <div className="flex h-screen justify-center items-center ">
 
-                <div className="flex-col justify-center  bg-white py-20 px-24 border-4 border-sky-500 rounded-xl ">
-                    <div className="p-4 mx-auto max-w-2xl bg-white rounded-lg border shadow-md sm:p-8 dark:bg-gray-800 dark:border-gray-700 overflow-auto">
+                <div className="flex-col justify-center  bg-white py-5 px-24 border-4 border-sky-500 rounded-xl ">
+                    <div className=" mx-auto max-w-2xl bg-white rounded-lg border shadow-md sm:p-8 dark:bg-gray-800 dark:border-gray-700 overflow-auto">
                         <div className=" items-center mb-4">
                             <h5 className="text-xl font-bold leading-none text-gray-900 dark:text-white pb-2">Consumibles</h5>
                             <input
