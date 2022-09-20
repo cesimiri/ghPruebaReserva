@@ -1,10 +1,9 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux/'
 import { setClienteNombre, setClienteApellidos, setClienteEmail, setclienteTelefono, setClienteDireccion, } from '../reducers/Sucursales'
-import IngresoDatos from '../controllers/IngresoDatos';
-// import { parse } from 'date-fns';
 import { useState } from 'react';
 import ModalEnvioDatos from './ModalEnvioDatos';
+
 
 const DatosCliente = () => {
 

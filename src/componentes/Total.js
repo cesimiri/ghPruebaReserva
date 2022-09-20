@@ -1,7 +1,13 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Button } from 'reactstrap';
-import { restarItem, sumarItem, sumaTotCons, eliminarItem , setSubTotal, setIva , setTotal } from '../reducers/Sucursales'
+import { restarItem, sumarItem, sumaTotCons, eliminarItem} from '../reducers/Sucursales'
+// los iconos https://mui.com/material-ui/material-icons/?query=delete
+//npm install @mui/icons-material
+import DeleteIcon from '@mui/icons-material/Delete';
+import AddIcon from '@mui/icons-material/Add';
+import RemoveIcon from '@mui/icons-material/Remove';
+
 
 const Total = () => {
     const stateReserva = useSelector(state => state.sucursales)
@@ -88,12 +94,14 @@ const Total = () => {
                                                             ${parseFloat(item.columna).toFixed(2)}
                                                         </td>
                                                         <td className='grid grid-cols-3 gap-2 ml-2'>
-                                                            <Button className='border border-cyan-700 bg-red-700 hover:bg-red-800 text-white w-5'
-                                                                onClick={() => dispatch(restarItem(item))}>-
+                                                            <Button 
+                                                                onClick={() => dispatch(restarItem(item))}>
+                                                                    <RemoveIcon color ='error'/>
                                                             </Button>
                                                             <p className=''>{item.prod_cant}</p>
-                                                            <Button className='border bg-blue-700 hover:bg-blue-800 text-white w-5'
-                                                                onClick={() => dispatch(sumarItem(item))}>+
+                                                            <Button 
+                                                                onClick={() => dispatch(sumarItem(item))}>
+                                                                    <AddIcon color='primary'/>
                                                             </Button>
                                                         </td>
                                                         <td>
@@ -102,8 +110,10 @@ const Total = () => {
                                                             <p className='  font-normal'>${(parseFloat(item.columna) * item.prod_cant).toFixed(2)}</p>
                                                         </td>
                                                         <td>
-                                                            <Button className='border border-cyan-700 bg-red-700 hover:bg-red-800 text-white w-5'
-                                                                onClick={() => dispatch(eliminarItem(item))}>*</Button>
+                                                            <Button className=' border-cyan-700  text-white w-5'
+                                                                onClick={() => dispatch(eliminarItem(item))}>
+                                                                    <DeleteIcon color = 'error'/>
+                                                            </Button>
                                                         </td>
                                                     </tr>
                                                 ))
