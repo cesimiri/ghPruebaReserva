@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux/'
-import { setClienteNombre, setClienteApellidos, setClienteEmail, setclienteTelefono, setClienteDireccion, } from '../reducers/Sucursales'
+import { setClienteNombre, setClienteApellidos, setClienteEmail, setclienteTelefono, setClienteDireccion } from '../reducers/Sucursales'
 import { useState } from 'react';
 import ModalEnvioDatos from './ModalEnvioDatos';
 
@@ -25,7 +25,7 @@ const DatosCliente = () => {
     const handleChangeDireccion = e => {
         dispatch(setClienteDireccion(e.target.value))
     }
-    
+
     const [modalOn, setModalOn] = useState(false);
 
     const enviar = () => {
@@ -89,11 +89,24 @@ const DatosCliente = () => {
                                 </div>
                             </div>
                             <div className="px-4 py-3 bg-gray-50 text-right sm:px-6">
-                                <button type="submit"
-                                    className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                                    onClick={enviar}>
-                                    Guardar
-                                </button>
+                                <>
+                                    {
+                                        stateReserva.stateComponent.botonDatos === !false ? (
+                                            <button type="submit"
+                                                className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 cursor-no-drop opacity-50"
+                                                disabled={stateReserva.stateComponent.botonDatos} 
+                                                onClick={enviar}>
+                                                Guardar
+                                            </button>
+                                        ) : (
+                                            <button type="submit"
+                                                className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"       
+                                                onClick={enviar}>
+                                                Guardar
+                                            </button>                                     
+                                        )
+                                    }
+                                </>
                             </div>
                             {modalOn && < ModalEnvioDatos setModalOn={setModalOn} />}
                         </div>

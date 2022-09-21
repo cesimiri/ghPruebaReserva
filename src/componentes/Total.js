@@ -17,13 +17,10 @@ const Total = () => {
     const precioDecoracion = stateReserva.reserva.decoracionPrecio
 
     const a = parseFloat(precioCuarto) + parseFloat(precioDecoracion) + parseFloat(stateReserva.valorTotal)
-
-    
     const subTotal = parseFloat(a)
     const b = (subTotal) * 0.12
     const iva = b.toFixed(2)
     const to = (subTotal) + parseFloat(iva)
-   
     const total = to.toFixed(2)
     useEffect(() => {
         dispatch(sumaTotCons())
@@ -35,7 +32,7 @@ const Total = () => {
         <>
             {
                 stateReserva.stateComponent.tipoHabitacionState === true ? (
-                    <div style={{ "width": "32rem" }} className="ml-2 p-3 w-96 bg-white rounded-lg border shadow-md  dark:bg-gray-800 dark:border-gray-700 absolute  ">
+                    <div style={{ "width": "32rem" }} className="ml-2 p-3  bg-white rounded-lg border shadow-md  dark:bg-gray-800 dark:border-gray-700 absolute  ">
                         <div className="flow-root">
                             <ul className="divide-y divide-gray-700 dark:divide-gray-700 ">
                                 <table className=' mb-2'>

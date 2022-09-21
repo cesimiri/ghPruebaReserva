@@ -32,7 +32,7 @@ const Calendary = () => {
                 <LocalizationProvider dateAdapter={AdapterDayjs} >
                     <Stack >
                         <DateTimePicker
-                            className='bg-sky-100 '
+                            className='bg-white '
                             // label="Fecha Reserva"
                             value={value}
                             onChange={handleChange}

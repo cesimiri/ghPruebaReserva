@@ -3,6 +3,7 @@
 import React from "react"
 import { useDispatch , useSelector } from 'react-redux'
 import IngresoDatos from '../controllers/IngresoDatos';
+import { setBotonDatos } from "../reducers/Sucursales";
 
 
 const ModalEnvioDatos = ({ setModalOn, setChoice, position }) => {
@@ -11,7 +12,6 @@ const ModalEnvioDatos = ({ setModalOn, setChoice, position }) => {
 
     const handleOKClick = () => {
         setModalOn(false)
-
         const envioDatos = {
             fecha: stateReserva.reserva.reservaFecha,
             hora : stateReserva.reserva.reservaHora,
@@ -34,6 +34,7 @@ const ModalEnvioDatos = ({ setModalOn, setChoice, position }) => {
          
         }
         dispatch(IngresoDatos(envioDatos))
+        dispatch(setBotonDatos())
         //reiniciar pagina
         // window.location.reload();
         console.log(envioDatos);

@@ -3,7 +3,7 @@ import Sucursales from "../controllers/Sucursales";
 import TipoHabitaciones from "../controllers/Tipohabitaciones";
 import Decoracion from "../controllers/Decoracion";
 import Consumibles from "../controllers/Consumibles";
-import IngresoDatos from "../controllers/IngresoDatos";
+
 const initialState = {
 
     stateComponent: {
@@ -13,6 +13,7 @@ const initialState = {
         comestiblesState: false,
         dropDownConsumible: false,
         dropDownCalendaryState : false, 
+        botonDatos : false ,
     },
     reserva: {
         reservaFecha : '',
@@ -66,6 +67,9 @@ const SucursalesSlice = createSlice({
         setHora: (state, action)=>{
             const algo = action.payload
             state.reserva.reservaHora = algo
+        },
+        setBotonDatos : (state ) =>{
+            state.stateComponent.botonDatos = true 
         },
         sucursalesState: (state, action) => {
             const id = 2
@@ -342,8 +346,8 @@ const SucursalesSlice = createSlice({
 
 })
 export const { sucursalesState, consumiblesState, setProductosPage,
-    tipoHabitacionesState, decoracionState, stateCuarto, stateDecoracion, dropDownCalendaryState ,
-    setBuscador,
+    tipoHabitacionesState, decoracionState, stateCuarto, stateDecoracion, dropDownCalendaryState , setBotonDatos , 
+    setBuscador, 
     changeProducto, datosCuarto, datosHotelCod, datosHotelNombre, datosDecoracion,
     sumarItem, restarItem, sumaTotCons, eliminarItem,
     setClienteNombre, setClienteApellidos, setClienteEmail, setclienteTelefono, setClienteDireccion,
