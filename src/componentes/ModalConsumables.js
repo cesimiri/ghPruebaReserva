@@ -83,12 +83,27 @@ const ModalConsumibles = ({ setModalOn, setChoice }) => {
                                                             ${parseFloat(c.columna).toFixed(2)}
                                                         </div>
 
-                                                        <div className="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
-                                                            <button className="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button" data-modal-toggle="defaultModal"
-                                                                onClick={() => clicked(c)}>
-                                                                Escoger
-                                                            </button>
-                                                        </div>
+                                                        {
+                                                            //si se dió a grabar se bloquea 
+                                                            stateReserva.stateComponent.botonDatos === !false ? (
+                                                                <div className="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white ">
+                                                                    <button className="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button" data-modal-toggle="defaultModal opacity-50 cursor-no-drop"
+                                                                        onClick={() => clicked(c)}
+                                                                        disabled={stateReserva.stateComponent.botonDatos}>
+                                                                        Escoger
+                                                                    </button>
+                                                                </div>
+                                                            ) : (
+                                                                <div className="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
+                                                                    <button className="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button" data-modal-toggle="defaultModal"
+                                                                        onClick={() => clicked(c)}>
+                                                                        Escoger
+                                                                    </button>
+                                                                </div>
+                                                            )
+                                                        }
+
+
                                                     </div>
                                                 </li>
                                             ))
@@ -110,6 +125,18 @@ const ModalConsumibles = ({ setModalOn, setChoice }) => {
                                                                     ${parseFloat(i.columna).toFixed(2)}
                                                                 </div>
 
+                                                                {
+                                                            //si se dió a grabar se bloquea 
+                                                            stateReserva.stateComponent.botonDatos === !false ? (
+                                                                <div className="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
+                                                                    <button className="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 opacity-50 cursor-no-drop"   
+                                                                        onClick={() => clicked(i)}
+                                                                        disabled={stateReserva.stateComponent.botonDatos}
+                                                                    >
+                                                                        Escoger
+                                                                    </button>
+                                                                </div>
+                                                            ) : (
                                                                 <div className="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
                                                                     <button className="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button" data-modal-toggle="defaultModal"
                                                                         onClick={() => clicked(i)}
@@ -117,6 +144,10 @@ const ModalConsumibles = ({ setModalOn, setChoice }) => {
                                                                         Escoger
                                                                     </button>
                                                                 </div>
+                                                            )
+                                                        }
+
+                                                                
                                                             </div>
                                                         </li>
                                                     ))

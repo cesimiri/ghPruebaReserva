@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Button } from 'reactstrap';
-import { restarItem, sumarItem, sumaTotCons, eliminarItem} from '../reducers/Sucursales'
+import { restarItem, sumarItem, sumaTotCons, eliminarItem } from '../reducers/Sucursales'
 // los iconos https://mui.com/material-ui/material-icons/?query=delete
 //npm install @mui/icons-material
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -24,9 +24,6 @@ const Total = () => {
     const total = to.toFixed(2)
     useEffect(() => {
         dispatch(sumaTotCons())
-        // dispatch(setSubTotal(subTotal ))
-        // dispatch(setIva(iva))
-        // dispatch(setTotal(total))
     }, [dispatch, stateReserva.arrayProductosSelect])
     return (
         <>
@@ -55,7 +52,7 @@ const Total = () => {
                                         <th className='w-28 '> DECORACIÓN: </th>
                                         <th className='w-60 font-normal'>{stateReserva.reserva.decoracionNombre}</th>
                                         <th className='w-14 font-normal text-right'>${parseFloat(precioDecoracion).toFixed(2)}</th>
-                                        <th className='w-20 font-normal'></th>  
+                                        <th className='w-20 font-normal'></th>
                                     </tr>
                                 </table>
                                 <li className="py-3 sm:py-0">
@@ -72,12 +69,12 @@ const Total = () => {
                                                     </th>
                                                     <th colSpan={2} style={{ textAlign: "center" }} className=' border border-black w-28'>
                                                         Agre/Quitar
-                                                    </th>      
+                                                    </th>
                                                     <th className=' border border-black w-20'>
-                                                    Total
+                                                        Total
                                                     </th>
                                                     <th className=' border border-black w-8'>
-                                                    Supri
+                                                        Supri
                                                     </th>
                                                 </tr>
                                             </thead>
@@ -90,28 +87,66 @@ const Total = () => {
                                                         <td >
                                                             ${parseFloat(item.columna).toFixed(2)}
                                                         </td>
-                                                        <td className='grid grid-cols-3 gap-2 ml-2'>
-                                                            <Button 
-                                                                onClick={() => dispatch(restarItem(item))}>
-                                                                    <RemoveIcon color ='error'/>
-                                                            </Button>
-                                                            <p className=''>{item.prod_cant}</p>
-                                                            <Button 
-                                                                onClick={() => dispatch(sumarItem(item))}>
-                                                                    <AddIcon color='primary'/>
-                                                            </Button>
-                                                        </td>
+                                                        {
+                                                            //si se dió a grabar se bloquea disabled={stateReserva.stateComponent.botonDatos} cursor-no-drop opacity-50
+                                                            stateReserva.stateComponent.botonDatos === !false ? (
+                                                                <td className='grid grid-cols-3 gap-2 ml-2'>
+                                                                    <Button
+                                                                        className='cursor-no-drop opacity-50'
+                                                                        disabled={stateReserva.stateComponent.botonDatos}
+                                                                        onClick={() => dispatch(restarItem(item))}>
+                                                                        <RemoveIcon color='error' />
+                                                                    </Button>
+
+                                                                    <p >{item.prod_cant}</p>
+
+                                                                    <Button
+                                                                        className='cursor-no-drop opacity-50'
+                                                                        disabled={stateReserva.stateComponent.botonDatos}
+                                                                        onClick={() => dispatch(sumarItem(item))}>
+                                                                        <AddIcon color='primary' />
+                                                                    </Button>
+                                                                </td>
+                                                            ) : (
+                                                                <td className='grid grid-cols-3 gap-2 ml-2'>
+                                                                    <Button
+                                                                        onClick={() => dispatch(restarItem(item))}>
+                                                                        <RemoveIcon color='error' />
+                                                                    </Button>
+                                                                    <p >{item.prod_cant}</p>
+                                                                    <Button
+                                                                        onClick={() => dispatch(sumarItem(item))}>
+                                                                        <AddIcon color='primary' />
+                                                                    </Button>
+                                                                </td>
+                                                            )
+                                                        }
+
                                                         <td>
-                                                        </td>  
+                                                        </td>
                                                         <td>
                                                             <p className='  font-normal'>${(parseFloat(item.columna) * item.prod_cant).toFixed(2)}</p>
                                                         </td>
-                                                        <td>
-                                                            <Button className=' border-cyan-700  text-white w-5'
+                                                        {
+                                            //si se dió a grabar se bloquea disabled={stateReserva.stateComponent.botonDatos} cursor-no-drop opacity-50
+                                            stateReserva.stateComponent.botonDatos === !false ? (
+                                                <td>
+                                                            <Button className=' border-cyan-700  text-white w-5 cursor-no-drop opacity-50'
+                                                                disabled={stateReserva.stateComponent.botonDatos}
                                                                 onClick={() => dispatch(eliminarItem(item))}>
-                                                                    <DeleteIcon color = 'error'/>
+                                                                <DeleteIcon color='error' />
                                                             </Button>
                                                         </td>
+                                            ) : (
+                                                <td>
+                                                            <Button className=' border-cyan-700  text-white w-5'
+                                                                onClick={() => dispatch(eliminarItem(item))}>
+                                                                <DeleteIcon color='error' />
+                                                            </Button>
+                                                        </td>
+                                            )
+                                        }
+                                                        
                                                     </tr>
                                                 ))
                                                 }
@@ -152,7 +187,6 @@ const Total = () => {
                                         <th className='w-20 font-normal'></th>
                                     </tr>
                                 </table>
-
                             </ul>
                         </div>
                     </div>

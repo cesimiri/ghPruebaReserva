@@ -10,8 +10,8 @@ import TextField from '@mui/material/TextField';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
-import { useDispatch , useSelector} from 'react-redux/'
-import { setFecha, setHora , tipoHabitacionesState} from '../reducers/Sucursales';
+import { useDispatch, useSelector } from 'react-redux/'
+import { setFecha, setHora, tipoHabitacionesState } from '../reducers/Sucursales';
 
 const Calendary = () => {
     const stateReserva = useSelector(state => state.sucursales)
@@ -28,20 +28,38 @@ const Calendary = () => {
     return (
         < >
             {
-                stateReserva.stateComponent.dropDownCalendaryState === true ?( 
-                <LocalizationProvider dateAdapter={AdapterDayjs} >
-                    <Stack >
-                        <DateTimePicker
-                            className='bg-white '
-                            // label="Fecha Reserva"
-                            value={value}
-                            onChange={handleChange}
-                            renderInput={(params) => <TextField {...params} />}
-                        />
-                    </Stack>
-                </LocalizationProvider>) : ( <> </> ) 
+                //si se dió a grabar se bloquea
+                stateReserva.stateComponent.botonDatos === !false ? (
+                    stateReserva.stateComponent.dropDownCalendaryState === true ? (
+                        <LocalizationProvider dateAdapter={AdapterDayjs} >
+                            <Stack >
+                                <DateTimePicker
+                                    className='bg-white '
+                                    // label="Fecha Reserva"
+                                    value={value}
+                                    onChange={handleChange}
+                                    disabled={stateReserva.stateComponent.botonDatos}
+                                    renderInput={(params) => <TextField {...params} />}
+                                />
+                            </Stack>
+                        </LocalizationProvider>) : (<> </>)
+
+                ) : (
+                    stateReserva.stateComponent.dropDownCalendaryState === true ? (
+                        <LocalizationProvider dateAdapter={AdapterDayjs} >
+                            <Stack >
+                                <DateTimePicker
+                                    className='bg-white '
+                                    // label="Fecha Reserva"
+                                    value={value}
+                                    onChange={handleChange}
+                                    renderInput={(params) => <TextField {...params} />}
+                                />
+                            </Stack>
+                        </LocalizationProvider>) : (<> </>)
+                )
             }
-            
+
         </>
 
 

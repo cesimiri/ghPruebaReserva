@@ -12,6 +12,7 @@ import { datosHotelCod, datosHotelNombre, dropDownCalendaryState } from "../redu
 const DropDown = () => {
   //state.reserva o como se llame en el store
   const hotelesState = useSelector(state => state.sucursales)
+  const stateReserva = useSelector(state => state.sucursales)
 
   const dispatch = useDispatch();
 
@@ -27,15 +28,36 @@ const DropDown = () => {
   }
 
   return (
-    <div>
-      <div>
-        <Select
-          defaultValue={{ label: 'Seleccione un local', value: 'Vacio ' }}
-          options={hotelesState.sucursales.map(local => ({ label: local.sucu_nom_sucu, value: local.sucu_cod_sucu }))}
-          onChange={handleSelectChange}
-        />
-      </div>
-    </div>
+    <>
+      {
+        //si se dió a grabar se bloquea
+        stateReserva.stateComponent.botonDatos === !false ? (
+          <div>
+            <div>
+              <Select
+                className="cursor-no-drop opacity-60"
+                defaultValue={{ label: 'Seleccione un local', value: 'Vacio ' }}
+                // options={hotelesState.sucursales.map(local => ({ label: local.sucu_nom_sucu, value: local.sucu_cod_sucu }))}
+                onChange={handleSelectChange}
+                disabled={stateReserva.stateComponent.botonDatos}
+              />
+            </div>
+          </div>
+        ) : (
+          <div>
+            <div>
+              <Select
+                defaultValue={{ label: 'Seleccione un local', value: 'Vacio ' }}
+                options={hotelesState.sucursales.map(local => ({ label: local.sucu_nom_sucu, value: local.sucu_cod_sucu }))}
+                onChange={handleSelectChange}
+              />
+            </div>
+          </div>
+        )
+      }
+    </>
+
+
   )
 }
 export default DropDown;

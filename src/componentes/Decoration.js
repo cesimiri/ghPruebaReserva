@@ -18,13 +18,13 @@ const Decoration = () => {
 
     const clicked = (p) => {
         setModalOn(true)
-        setPosition(p)  
+        setPosition(p)
     }
     return (
         <>
             {
                 // stateReserva.stateComponent.decoracion?.length > 0? (
-                stateReserva.stateComponent.tipoHabitacionState === true ?(
+                stateReserva.stateComponent.tipoHabitacionState === true ? (
                     <div className="p-4 mx-auto max-w-xl bg-white rounded-lg border shadow-md sm:p-8 dark:bg-gray-800 dark:border-gray-700">
                         <div className=" items-center mb-4">
                             <h5 className="text-xl font-bold leading-none text-gray-900 dark:text-white">Escoja la decoración</h5>
@@ -48,13 +48,29 @@ const Decoration = () => {
                                             <div className="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
 
                                             </div>
-                                            <div className="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
-                                                <button className="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button" data-modal-toggle="defaultModal"
-                                                    onClick={()=> clicked(p)}
-                                                >
-                                                    Escoger 
-                                                </button>
-                                            </div>
+                                            {
+                                                //si se dió a grabar se bloquea 
+                                                stateReserva.stateComponent.botonDatos === !false ? (
+                                                    <div className="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white  opacity-50 cursor-no-drop">
+                                                        <button className="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button" data-modal-toggle="defaultModal"
+                                                            onClick={() => clicked(p)}
+                                                            disabled={stateReserva.stateComponent.botonDatos}
+                                                        >
+                                                            Escoger
+                                                        </button>
+                                                    </div>
+                                                ) : (
+                                                    <div className="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
+                                                        <button className="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button" data-modal-toggle="defaultModal"
+                                                            onClick={() => clicked(p)}
+                                                        >
+                                                            Escoger
+                                                        </button>
+                                                    </div>
+                                                )
+                                            }
+
+
                                         </div>
                                         {modalOn && < ModalDecoracionconfim setModalOn={setModalOn} setChoice={setChoice} position={position} />}
                                     </li>
@@ -63,9 +79,9 @@ const Decoration = () => {
                         </div>
                     </div>
                 ) : (
-            <>
-            </>
-            )
+                    <>
+                    </>
+                )
             }
 
         </>
