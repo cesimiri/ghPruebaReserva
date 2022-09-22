@@ -1,24 +1,18 @@
 import React from 'react';
 import { useSelector } from 'react-redux/';
 import { useDispatch } from "react-redux";
-
-
-import ModalDecoracionconfim from './ModalDecoracionConfirm';
-import { useState } from 'react';
-
+import { stateDecoracion } from "../reducers/Sucursales"
+import { datosDecoracion } from '../reducers/Sucursales';
+import decoration from '../controllers/Decoracion';
 
 const Decoration = () => {
-
     const stateReserva = useSelector(state => state.sucursales)
     const dispatch = useDispatch();
 
-    const [modalOn, setModalOn] = useState(false);
-    const [choise, setChoice] = useState(false);
-    const [position, setPosition] = useState(0)
-
     const clicked = (p) => {
-        setModalOn(true)
-        setPosition(p)
+        dispatch(decoration)
+        dispatch(stateDecoracion(true))
+        dispatch(datosDecoracion(p))
     }
     return (
         <>
@@ -69,10 +63,7 @@ const Decoration = () => {
                                                     </div>
                                                 )
                                             }
-
-
                                         </div>
-                                        {modalOn && < ModalDecoracionconfim setModalOn={setModalOn} setChoice={setChoice} position={position} />}
                                     </li>
                                 ))}
                             </ul>
@@ -83,7 +74,6 @@ const Decoration = () => {
                     </>
                 )
             }
-
         </>
     )
 }

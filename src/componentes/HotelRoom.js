@@ -1,21 +1,17 @@
 import React from 'react';
 import { useSelector } from 'react-redux/es/exports';
-import TestModal from './ModalCuartoConfirm';
-import { useState } from 'react';
 import { useDispatch } from "react-redux";
-
+import Decoracion from "../controllers/Decoracion"
+import { stateCuarto , datosCuarto } from "../reducers/Sucursales"
 
 const RoomCard = () => {
     const stateReserva = useSelector(state => state.sucursales)
     const dispatch = useDispatch();
 
-    const [modalOn, setModalOn] = useState(false);
-    const [choise, setChoice] = useState(false);
-    const [position, setPosition] = useState(0)
-
     const clicked = (x) => {
-        setModalOn(true)
-        setPosition(x)
+        dispatch(Decoracion())
+        dispatch(stateCuarto(true))
+        dispatch(datosCuarto(x)) 
     }
     return (
         <>
@@ -62,16 +58,12 @@ const RoomCard = () => {
                                             </div>
                                         )
                                     }
-
-
-
-
                                 </div>
                             </li>
                         ))}
                     </ul>
                 </div>
-                {modalOn && < TestModal setModalOn={setModalOn} setChoice={setChoice} position={position} />}
+                
             </div>
 
 
