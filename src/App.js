@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
+// navegacion se usa https://www.youtube.com/watch?v=afDXVnDnBf4   https://reactrouter.com/en/v6.3.0/getting-started/installation
 
 import './App.css';
 import NavBar from './componentes/navBar';
-// import Dropdown from './componentes/dropDown';
 import RoomCard from './componentes/HotelRoom';
 import Decoration from './componentes/Decoration';
 import Total from './componentes/Total';
