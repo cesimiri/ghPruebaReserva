@@ -1,10 +1,11 @@
-import React from 'react';
+import React   from 'react';
 import { useSelector } from 'react-redux/';
 import { useDispatch } from "react-redux";
 import { stateDecoracion } from "../reducers/Sucursales"
 import { datosDecoracion } from '../reducers/Sucursales';
 import decoration from '../controllers/Decoracion';
 import Consumibles from "../controllers/Consumibles";
+
 
 const Decoration = () => {
     const stateReserva = useSelector(state => state.sucursales)
@@ -16,21 +17,21 @@ const Decoration = () => {
         dispatch(datosDecoracion(p))
 
         const datos = {
-            idSucursal :  parseInt(stateReserva.reserva.hotelCod) 
-          }
-      
-          dispatch(Consumibles(datos))
+            idSucursal: parseInt(stateReserva.reserva.hotelCod)
+        }
+
+        dispatch(Consumibles(datos))
     }
     return (
         <>
             {
                 // stateReserva.stateComponent.decoracion?.length > 0? (
                 stateReserva.stateComponent.tipoHabitacionState === true ? (
-                    <div className="p-4 mx-auto max-w-xl bg-white rounded-lg border shadow-md sm:p-8 dark:bg-gray-800 dark:border-gray-700">
+                    <div className="p-4 mx-auto max-w-xl bg-white rounded-lg border shadow-md sm:p-8 dark:bg-gray-800 dark:border-gray-700" >
                         <div className="flex items-center space-x-4">
-                             
+
                             <div className="flex-1 min-w-0">
-                                <a className='text-left'>Anterior</a>
+                                <a href='#cuarto' className='text-left'>Anterior</a>
                             </div>
                             <div className="flex-1 min-w-0">
 

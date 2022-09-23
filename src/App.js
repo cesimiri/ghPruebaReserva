@@ -8,9 +8,8 @@ import Decoration from './componentes/Decoration';
 import Total from './componentes/Total';
 import { useDispatch } from 'react-redux';
 import Sucursales from './controllers/Sucursales';
-import DropDownConsumable from './componentes/dropDownConsumible';
+import ModalConsumibles from './componentes/ModalConsumables';
 import DatosCliente from './componentes/DatosCliente';
-import Calendary from './componentes/calendary';
 
 function App() {
 
@@ -41,7 +40,7 @@ function App() {
         </div>
 
         <div className='mt-20 pl-40  border-slate-600'>
-          <DropDownConsumable />
+          <ModalConsumibles/>
         </div>
 
         <div className='mt-20 pl-40   border-slate-600'>

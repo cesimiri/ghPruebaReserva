@@ -16,7 +16,7 @@ const RoomCard = () => {
     return (
         <>
 
-            <div className="p-4 mx-auto max-w-xl bg-white rounded-lg border shadow-md sm:p-8 dark:bg-gray-800 dark:border-gray-700 ">
+            <div className="p-4 mx-auto max-w-xl bg-white rounded-lg border shadow-md sm:p-8 dark:bg-gray-800 dark:border-gray-700 " id ="cuarto">
                 <div className="flex items-center space-x-4">
 
                     <div className="flex-1 min-w-0">
@@ -29,7 +29,7 @@ const RoomCard = () => {
 
                     </div>
                     <div className="flex-1 min-w-0">
-                        <a className='text-right'>Siguiente</a>
+                        <a href='#Decoration'  className='text-right'>Siguiente</a>
                     </div>
                 </div>
                 <div className="items-center mb-4">
