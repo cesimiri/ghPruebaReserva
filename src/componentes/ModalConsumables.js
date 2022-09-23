@@ -57,6 +57,21 @@ const ModalConsumibles = ({ setModalOn, setChoice }) => {
 
                 <div className="flex-col justify-center  bg-white py-5 px-24 border-4 border-sky-500 rounded-xl ">
                     <div className=" mx-auto max-w-2xl bg-white rounded-lg border shadow-md sm:p-8 dark:bg-gray-800 dark:border-gray-700 overflow-auto">
+                        <div className="flex items-center space-x-4">
+
+                            <div className="flex-1 min-w-0">
+                                <a className='text-left'>Anterior</a>
+                            </div>
+                            <div className="flex-1 min-w-0">
+
+                            </div>
+                            <div className="flex-1 min-w-0">
+
+                            </div>
+                            <div className="flex-1 min-w-0">
+                                <a className='text-right'>Siguiente</a>
+                            </div>
+                        </div>
                         <div className=" items-center mb-4">
                             <h5 className="text-xl font-bold leading-none text-gray-900 dark:text-white pb-2">Consumibles</h5>
                             <input
@@ -126,28 +141,28 @@ const ModalConsumibles = ({ setModalOn, setChoice }) => {
                                                                 </div>
 
                                                                 {
-                                                            //si se dió a grabar se bloquea 
-                                                            stateReserva.stateComponent.botonDatos === !false ? (
-                                                                <div className="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
-                                                                    <button className="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 opacity-50 cursor-no-drop"   
-                                                                        onClick={() => clicked(i)}
-                                                                        disabled={stateReserva.stateComponent.botonDatos}
-                                                                    >
-                                                                        Escoger
-                                                                    </button>
-                                                                </div>
-                                                            ) : (
-                                                                <div className="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
-                                                                    <button className="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button" data-modal-toggle="defaultModal"
-                                                                        onClick={() => clicked(i)}
-                                                                    >
-                                                                        Escoger
-                                                                    </button>
-                                                                </div>
-                                                            )
-                                                        }
+                                                                    //si se dió a grabar se bloquea 
+                                                                    stateReserva.stateComponent.botonDatos === !false ? (
+                                                                        <div className="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
+                                                                            <button className="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 opacity-50 cursor-no-drop"
+                                                                                onClick={() => clicked(i)}
+                                                                                disabled={stateReserva.stateComponent.botonDatos}
+                                                                            >
+                                                                                Escoger
+                                                                            </button>
+                                                                        </div>
+                                                                    ) : (
+                                                                        <div className="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
+                                                                            <button className="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button" data-modal-toggle="defaultModal"
+                                                                                onClick={() => clicked(i)}
+                                                                            >
+                                                                                Escoger
+                                                                            </button>
+                                                                        </div>
+                                                                    )
+                                                                }
 
-                                                                
+
                                                             </div>
                                                         </li>
                                                     ))

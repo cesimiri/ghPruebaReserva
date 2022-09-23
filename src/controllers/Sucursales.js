@@ -9,11 +9,7 @@ const Sucursales = createAsyncThunk("sucursales/PostSucursales", async (x) =>{
             metodo: "ListarHoteles",
                   
         }
-        // ...datos,
-
-        // usuario: localStorage.getItem("xxx") || document.cookie.split("=")[1],
     })
-
 
     return respuesta.data
 })
