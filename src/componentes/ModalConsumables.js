@@ -1,5 +1,4 @@
 // recursos https://www.youtube.com/watch?v=UXKt-IFgBGM
-
 import { Pagination, Stack } from "@mui/material";
 import React, { useEffect, useState } from "react"
 import { useSelector, useDispatch } from "react-redux";
@@ -92,7 +91,7 @@ const ModalConsumibles = () => {
                                                         //si se dió a grabar se bloquea 
                                                         stateReserva.stateComponent.botonDatos === !false ? (
                                                             <div className="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white ">
-                                                                <button className="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                                                                <button className="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 cursor-no-drop opacity-50"
                                                                     disabled={stateReserva.stateComponent.botonDatos}>
                                                                     Escoger
                                                                 </button>

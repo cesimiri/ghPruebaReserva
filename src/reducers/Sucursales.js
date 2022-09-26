@@ -31,7 +31,6 @@ const initialState = {
         decoracionCod: 0,
         decoracionNombre: '',
         decoracionPrecio: 0,
-
         subTotal :0, 
         iva : 0, 
         total : 0 ,
@@ -73,7 +72,6 @@ const SucursalesSlice = createSlice({
         },
         sucursalesState: (state, action) => {
             const id = 2
-
             state.sucursales.id = id
         },
         consumiblesState: (state, action) => {
@@ -172,7 +170,7 @@ const SucursalesSlice = createSlice({
                 item.prod_can_prod = item.prod_can_prod + 1
 
                 state.arrayProductosSelect[position] = { ...item }
-
+                
             }
 
             if (existe) {
@@ -289,19 +287,7 @@ const SucursalesSlice = createSlice({
             if (estado === 1) {
                 // consumible es el nombre que se le dio al array en la clase CConsumible array('consumible' => $exec));
                 const { consumible } = data
-                // state.consumible = []
                 state.consumible.push(...consumible)
-                // consumible.map((i, x)=>{
-                    
-                //     console.log( "NAN: ", (i.columna != null) )
-
-                //     if((i.columna != null)){ 
-                //         // console.log(x)
-                //         // console.log(i)
-                //         state.consumible = [...consumible]
-                //     }
-                // })
-                //state.consumible.push(i)
             }
         },
         [Decoracion.pending]: (state, action) => {

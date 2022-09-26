@@ -44,7 +44,6 @@ const DropDown = () => {
             </div>
           </div>
         ) : (
-          <div>
             <div>
               <Select
                 defaultValue={{ label: 'Seleccione un local', value: 'Vacio ' }}
@@ -52,7 +51,6 @@ const DropDown = () => {
                 onChange={handleSelectChange}
               />
             </div>
-          </div>
         )
       }
     </>
