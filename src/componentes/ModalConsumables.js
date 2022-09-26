@@ -22,8 +22,6 @@ const ModalConsumibles = () => {
         dispatch(setProductosPage({ pagina: i, limite }))
     }
 
-
-
     const handleChange = e => {
         dispatch(setBuscador(e.target.value))
         setQuery(e.target.value)
@@ -46,14 +44,14 @@ const ModalConsumibles = () => {
     }, [dispatch, stateReserva.arrayProductosSelect])
 
     return (
-        <>
+        <div id="Consumables">
             {
                 stateReserva.stateComponent.decoracionState === true ? (
                     <div className="p-4 mx-auto max-w-xl bg-white rounded-lg border shadow-md sm:p-8 dark:bg-gray-800 dark:border-gray-700">
                         <div className="flex items-center space-x-4">
 
                             <div className="flex-1 min-w-0">
-                                <a className='text-left'>Anterior</a>
+                                <a href="#Decoration" className='text-left text-blue-400 hover:text-blue-700'>Anterior</a>
                             </div>
                             <div className="flex-1 min-w-0">
 
@@ -62,7 +60,7 @@ const ModalConsumibles = () => {
 
                             </div>
                             <div className="flex-1 min-w-0">
-                                <a className='text-right'>Siguiente</a>
+                                <a href="#DatosCliente" className='text-right text-blue-400 hover:text-blue-700'>Siguiente</a>
                             </div>
                         </div>
                         <div className=" items-center mb-4">
@@ -94,23 +92,20 @@ const ModalConsumibles = () => {
                                                         //si se dió a grabar se bloquea 
                                                         stateReserva.stateComponent.botonDatos === !false ? (
                                                             <div className="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white ">
-                                                                <button className="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button" data-modal-toggle="defaultModal opacity-50 cursor-no-drop"
-                                                                    onClick={() => clicked(c)}
+                                                                <button className="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                                                                     disabled={stateReserva.stateComponent.botonDatos}>
                                                                     Escoger
                                                                 </button>
                                                             </div>
                                                         ) : (
                                                             <div className="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
-                                                                <button className="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button" data-modal-toggle="defaultModal"
+                                                                <button className="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                                                                     onClick={() => clicked(c)}>
                                                                     Escoger
                                                                 </button>
                                                             </div>
                                                         )
                                                     }
-
-
                                                 </div>
                                             </li>
                                         ))
@@ -176,7 +171,7 @@ const ModalConsumibles = () => {
                     </div>
                 ) : (<> </>)
             }
-        </>
+        </div>
     );
 }
 

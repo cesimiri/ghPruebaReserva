@@ -35,12 +35,26 @@ const DatosCliente = () => {
     }
 
     return (
-        <>
+        <div id='DatosCliente'>
             {
                 stateReserva.stateComponent.tipoHabitacionState === true ? (
                     <div className="p-4 mx-auto max-w-xl bg-white rounded-lg border shadow-md sm:p-8 dark:bg-gray-800 dark:border-gray-700">
                         <div className="shadow overflow-hidden sm:rounded-md">
                             <div className="px-4 py-5 bg-white sm:p-6">
+                                <div className="flex items-center space-x-4">
+
+                                    <div className="flex-1 min-w-0">
+                                        <a href="#Consumables" className='text-left text-blue-400 hover:text-blue-700'>Anterior</a>
+                                    </div>
+                                    <div className="flex-1 min-w-0">
+
+                                    </div>
+                                    <div className="flex-1 min-w-0">
+                                    </div>
+                                    <div className="flex-1 min-w-0">
+
+                                    </div>
+                                </div>
                                 <div className="grid grid-cols-6 gap-6">
                                     <div className="col-span-6 sm:col-span-3">
                                         <label className="block text-sm font-medium text-gray-700">Nombre</label>
@@ -183,8 +197,7 @@ const DatosCliente = () => {
                     </>
                 )
             }
-
-        </>
+        </div>
     )
 }
 

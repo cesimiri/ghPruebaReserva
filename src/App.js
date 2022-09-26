@@ -31,19 +31,19 @@ function App() {
         <div className='fixed border-cyan-200 break-words float-left' >
           <Total />
         </div>
-        <div className='mt-24 pl-40 border-slate-600'>
+        <div className='mt-24 pl-60 border-slate-600'>
           <RoomCard />
         </div>
 
-        <div className='mt-20 pl-40   border-slate-600'>
+        <div className='mt-20 pl-60   border-slate-600'>
           <Decoration />
         </div>
 
-        <div className='mt-20 pl-40  border-slate-600'>
+        <div className='mt-20 pl-60  border-slate-600'>
           <ModalConsumibles/>
         </div>
 
-        <div className='mt-20 pl-40   border-slate-600'>
+        <div className='mt-20 pl-60   border-slate-600'>
           <DatosCliente />
         </div>
       </div>
