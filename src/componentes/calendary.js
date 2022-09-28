@@ -17,6 +17,7 @@ const Calendary = () => {
     const stateReserva = useSelector(state => state.sucursales)
     const dispatch = useDispatch()
     const [value, setValue] = React.useState(dayjs());
+    const fechaMinima = dayjs() ;
 
     const handleChange = (newValue) => {
         setValue(newValue);
@@ -54,6 +55,7 @@ const Calendary = () => {
                                     value={value}
                                     onChange={handleChange}
                                     renderInput={(params) => <TextField {...params} />}
+                                    minDate = {fechaMinima}
                                 />
                             </Stack>
                         </LocalizationProvider>) : (<> </>)
