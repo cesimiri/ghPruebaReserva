@@ -7,11 +7,12 @@ import Select from "react-select";
 import { useSelector } from 'react-redux';
 import { useDispatch } from "react-redux";
 import TipoHabitaciones from "../controllers/Tipohabitaciones";
-import { datosHotelCod, datosHotelNombre } from "../reducers/Sucursales";
+import { datosHotelCod, datosHotelNombre, dropDownCalendaryState } from "../reducers/Sucursales";
 
 const DropDown = () => {
   //state.reserva o como se llame en el store
   const hotelesState = useSelector(state => state.sucursales)
+  const stateReserva = useSelector(state => state.sucursales)
 
   const dispatch = useDispatch();
 
@@ -22,19 +23,39 @@ const DropDown = () => {
     console.log('el id del local es ' + event.value)
     dispatch(datosHotelCod(event.value))
     dispatch(datosHotelNombre(event.label))
+    dispatch(dropDownCalendaryState())
 
   }
 
   return (
-    <div>
-      <div>
-        <Select
-          defaultValue={{ label: 'Seleccione un local', value: 'Vacio ' }}
-          options={hotelesState.sucursales.map(local => ({ label: local.sucu_nom_sucu, value: local.sucu_cod_sucu }))}
-          onChange={handleSelectChange}
-        />
-      </div>
-    </div>
+    <>
+      {
+        //si se dió a grabar se bloquea
+        stateReserva.stateComponent.botonDatos === !false ? (
+          <div>
+            <div>
+              <Select
+                className="cursor-no-drop opacity-60"
+                defaultValue={{ label: 'Seleccione un local', value: 'Vacio ' }}
+                // options={hotelesState.sucursales.map(local => ({ label: local.sucu_nom_sucu, value: local.sucu_cod_sucu }))}
+                onChange={handleSelectChange}
+                disabled={stateReserva.stateComponent.botonDatos}
+              />
+            </div>
+          </div>
+        ) : (
+            <div>
+              <Select
+                defaultValue={{ label: 'Seleccione un local', value: 'Vacio ' }}
+                options={hotelesState.sucursales.map(local => ({ label: local.sucu_nom_sucu, value: local.sucu_cod_sucu }))}
+                onChange={handleSelectChange}
+              />
+            </div>
+        )
+      }
+    </>
+
+
   )
 }
 export default DropDown;

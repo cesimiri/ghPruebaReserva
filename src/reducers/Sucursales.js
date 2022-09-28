@@ -3,6 +3,7 @@ import Sucursales from "../controllers/Sucursales";
 import TipoHabitaciones from "../controllers/Tipohabitaciones";
 import Decoracion from "../controllers/Decoracion";
 import Consumibles from "../controllers/Consumibles";
+
 const initialState = {
 
     stateComponent: {
@@ -11,9 +12,13 @@ const initialState = {
         consumibleSate: false,
         comestiblesState: false,
         dropDownConsumible: false,
+        dropDownCalendaryState : false, 
+        botonDatos : false ,
     },
     reserva: {
-        ClienteNombres: '',
+        reservaFecha : '',
+        reservaHora : '',
+        clienteNombres: '',
         clienteApellidos: '',
         clienteEmail: '',
         clienteTelefono: '',
@@ -26,22 +31,9 @@ const initialState = {
         decoracionCod: 0,
         decoracionNombre: '',
         decoracionPrecio: 0,
-        listaConsumibles: [
-            {
-                productoCod: 0,
-                productoCantidad: 1,
-                productoNombre: '',
-                productoPrecio: 0,
-
-            },
-        ],
-        datosCliente: {
-
-            clienteNombre: '',
-            clienteApellidos: '',
-            clienteCedula: '',
-            clientetelefono: '',
-        },
+        subTotal :0, 
+        iva : 0, 
+        total : 0 ,
     },
     isLoading: false,
     sucursales: [],
@@ -52,16 +44,8 @@ const initialState = {
     buscador: '',
     seleccionProductos: [
         {
-            id: 1740,
-            nombre: 'PLATOS A LA CARTA'
-        },
-        {
-            id: 1741,
-            nombre: 'BEBIDAS'
-        },
-        {
-            id: 1742,
-            nombre: 'OTROS'
+            id: 1,
+            nombre: 'Productos'
         },
     ],
     arrayProductosSelect: [],
@@ -75,9 +59,19 @@ const SucursalesSlice = createSlice({
     initialState: initialState,
     reducers: {
         // todos los reduceers aqui 
+        setFecha: (state, action)=>{
+            const algo = action.payload
+            state.reserva.reservaFecha = algo
+        },
+        setHora: (state, action)=>{
+            const algo = action.payload
+            state.reserva.reservaHora = algo
+        },
+        setBotonDatos : (state ) =>{
+            state.stateComponent.botonDatos = true 
+        },
         sucursalesState: (state, action) => {
             const id = 2
-
             state.sucursales.id = id
         },
         consumiblesState: (state, action) => {
@@ -89,12 +83,32 @@ const SucursalesSlice = createSlice({
             // state.buscador = algo
 
             state.searchProduct = state.consumible.filter((elemento) => {
-
                 // console.log(elemento.prod_nom_prod)
                 if (elemento.prod_nom_prod != null) {
                     return elemento.prod_nom_prod.toString().toLowerCase().includes(algo.toLowerCase())
+                }else{
+                    console.log("esto")
                 }
             })
+        },
+        setProductosPage: (state, action) => {
+            let { pagina, limite } = action.payload
+
+            if (parseInt(limite) === 0) limite = 10
+
+            state.searchProduct = state.consumible.slice((pagina - 1) * limite, pagina * limite)                    
+        },
+        setSubTotal : (state, action) => {
+            const algo = action.payload
+            state.reserva.subTotal = algo
+        },
+        setIva : (state, action) => {
+            const algo = action.payload
+            state.reserva.iva = algo
+        },
+        setTotal : (state, action) => {
+            const algo = action.payload
+            state.reserva.total = algo
         },
         setClienteNombre: (state, action) => {
             const algo = action.payload
@@ -116,14 +130,9 @@ const SucursalesSlice = createSlice({
             const algo = action.payload
             state.reserva.clienteDireccion = algo
         },
-        setProductosPage: (state, action) => {
-            let { pagina, limite } = action.payload
-
-            if (parseInt(limite) == 0) limite = 10
-
-            state.searchProduct = state.consumible.slice((pagina - 1) * limite, pagina * limite)
-
-        },
+        dropDownCalendaryState : (state, action) =>{
+            state.stateComponent.dropDownCalendaryState = true
+        },        
         tipoHabitacionesState: (state, action) => {
             const id = 2
             state.tipoHabitaciones.id = id
@@ -135,8 +144,7 @@ const SucursalesSlice = createSlice({
             state.decoracion.id = id
         },
         stateCuarto: (state, action) => {
-            const stateCuarto = action.payload
-            state.stateComponent.tipoHabitacionState = stateCuarto
+            state.stateComponent.tipoHabitacionState = true
         },
         stateDecoracion: (state, action) => {
             const stateDecoracion = action.payload
@@ -157,12 +165,12 @@ const SucursalesSlice = createSlice({
             } else {
                 position = state.arrayProductosSelect.findIndex(item => parseInt(item.prod_cod_prod) === parseInt(prod_cod_prod))
 
-                let item = action.payload
+                const item = action.payload
 
                 item.prod_can_prod = item.prod_can_prod + 1
 
                 state.arrayProductosSelect[position] = { ...item }
-
+                
             }
 
             if (existe) {
@@ -177,7 +185,6 @@ const SucursalesSlice = createSlice({
             state.reserva.cuartoCod = tpHb.tiha_cod_tiha
             state.reserva.cuartoNombre = tpHb.tiha_nom_tiha
             state.reserva.cuartoPrecio = tpHb.tiha_cos_maxi
-
         },
         datosHotelCod: (state, action) => {
             const dh = action.payload
@@ -194,11 +201,11 @@ const SucursalesSlice = createSlice({
             state.reserva.decoracionPrecio = tpD.decora_cosmax
         },
         sumaTotCons: (state) => {
-
-            if (state.arrayValores.length > 0) {
+            if (state.arrayValores.length > 0 ) {
                 state.valorTotal = state.arrayValores.reduce((x, i) => parseFloat(x) + parseFloat(i))
+            }else{
+                state.valorTotal = 0;
             }
-
         },
         sumarItem: (state, action) => {
 
@@ -218,7 +225,6 @@ const SucursalesSlice = createSlice({
                 if (state.consumible[position]) {
                     state.arrayValores[position] = ValoresASumar
                 }
-
             }
 
         },
@@ -241,8 +247,6 @@ const SucursalesSlice = createSlice({
                         state.arrayValores[position] = ValoresARestar
                     }
                 }
-
-
             }
         },
         eliminarItem: (state, action) => {
@@ -260,10 +264,10 @@ const SucursalesSlice = createSlice({
     extraReducers: {
         [Sucursales.pending]: (state, action) => {
             state.isLoading = true
+
         },
         [Sucursales.fulfilled]: (state, action) => {
             state.isLoading = false
-
             // console.log(action.payload)
             const { estado, mensaje, data } = action.payload
 
@@ -271,6 +275,7 @@ const SucursalesSlice = createSlice({
 
                 const { sucursales } = data
                 state.sucursales = [...sucursales]
+                
             }
         },
         [Consumibles.pending]: (state, action) => {
@@ -278,19 +283,11 @@ const SucursalesSlice = createSlice({
         },
         [Consumibles.fulfilled]: (state, action) => {
             state.isLoading = false
-
-            const { estado, mensaje, data } = action.payload
-
+            const { estado, mensaje, data } = action.payload        
             if (estado === 1) {
                 // consumible es el nombre que se le dio al array en la clase CConsumible array('consumible' => $exec));
                 const { consumible } = data
-                // console.log(consumible) para mapear el array de objeto y traer los campos con valor
-                consumible.map((i)=>{
-                    if(i.columna){
-                        state.consumible.push(i)
-                    }
-                })
-                // state.consumible = [...consumible]
+                state.consumible.push(...consumible)
             }
         },
         [Decoracion.pending]: (state, action) => {
@@ -322,15 +319,26 @@ const SucursalesSlice = createSlice({
             }
 
         },
+
+
+        // [IngresoDatos.pending]: state =>{
+        // //  DIBUJAR RELOJ
+        // },
+        // [IngresoDatos.fulfilled]: (state, {payload})=>{
+        //     state.Consumibles = []
+        //     state.reserva = initialState.reserva
+        // }
     }
 
 })
 export const { sucursalesState, consumiblesState, setProductosPage,
-    tipoHabitacionesState, decoracionState, stateCuarto, stateDecoracion,
-    setBuscador,
+    tipoHabitacionesState, decoracionState, stateCuarto, stateDecoracion, dropDownCalendaryState , setBotonDatos , 
+    setBuscador, 
     changeProducto, datosCuarto, datosHotelCod, datosHotelNombre, datosDecoracion,
     sumarItem, restarItem, sumaTotCons, eliminarItem,
     setClienteNombre, setClienteApellidos, setClienteEmail, setclienteTelefono, setClienteDireccion,
+    setSubTotal, setIva , setTotal , 
+    setFecha , setHora
 }
     = SucursalesSlice.actions;
 export default SucursalesSlice.reducer;
