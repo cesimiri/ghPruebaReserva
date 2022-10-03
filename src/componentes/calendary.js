@@ -25,12 +25,12 @@ const Calendary = () => {
         dispatch(setHora(value.format('HH:mm')))
         dispatch(tipoHabitacionesState())
     };
-
+    
     return (
         < >
             {
                 //si se dió a grabar se bloquea
-                stateReserva.stateComponent.botonDatos === !false ? (
+                stateReserva.stateComponent.botonDatos === true ? (
                     stateReserva.stateComponent.dropDownCalendaryState === true ? (
                         <LocalizationProvider dateAdapter={AdapterDayjs} >
                             <Stack >
@@ -46,7 +46,7 @@ const Calendary = () => {
                         </LocalizationProvider>) : (<> </>)
 
                 ) : (
-                    stateReserva.stateComponent.dropDownCalendaryState === true ? (
+                    
                         <LocalizationProvider dateAdapter={AdapterDayjs} >
                             <Stack >
                                 <DateTimePicker
@@ -54,11 +54,11 @@ const Calendary = () => {
                                     // label="Fecha Reserva"
                                     value={value}
                                     onChange={handleChange}
-                                    renderInput={(params) => <TextField {...params} />}
+                                    renderInput={(params) => <TextField style={{  background: "red" , height: 55 }} {...params} />}
                                     minDate = {fechaMinima}
                                 />
                             </Stack>
-                        </LocalizationProvider>) : (<> </>)
+                        </LocalizationProvider>
                 )
             }
 
